@@ -1,0 +1,19 @@
+container_image = osdf:///ospool/ap40/data/henry.morin/my-container.sif
+    
+executable = ../main.sh
+transfer_input_files = ../FindIndicatorMats.py, ../data/aBounds.npy, ../data/genus.npy, ../data/intMat.npy
+transfer_output_remaps = "IMats0.npy = osdf:///ospool/ap40/data/henry.morin/small_batch/small_batch0.npy"
+arguments = 0 -1 
+ 
+error = ../errors/job0.error
+log = ../logs/job0.log
+output = ../outs/job0.out
+
+
++JobDurationCategory = "Medium"
+    
+request_cpus    = 1 
+request_memory  = 15GB
+request_disk    = 15GB
+    
+queue 1
