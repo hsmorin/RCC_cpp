@@ -1,8 +1,4 @@
-module globalVars
-
-version = 0
+version_global = 0
 projectName = "small_batch"
-prefix = "//home/henry.morin"
-N = 22
-
-end
+prefix_global = "//home/henry.morin"
+N = 10
