@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/hsmorin/Documents/RCC/julia_implement/cpp/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
