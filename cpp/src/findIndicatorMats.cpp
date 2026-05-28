@@ -5,6 +5,8 @@
 #include "ortools/sat/cp_model.h"
 #include "ortools/sat/cp_model.pb.h"
 #include "ortools/sat/cp_model_solver.h"
+#include "ortools/sat/model.h"
+#include "ortools/sat/sat_parameters.pb.h"
 #include "ortools/util/sorted_interval_list.h"
 #include <algorithm>
 #include <bits/stdc++.h>
@@ -19,7 +21,16 @@
 #include <vector>
 using namespace std;
 
-void displayMatrix(vector<array<int, 11>> &matrix) {
+void displayMatrix(const vector<vector<int>> &matrix) {
+  for (const auto &row : matrix) {
+    for (int val : row) {
+      cout << val << " ";
+    }
+    cout << "\n";
+  }
+}
+
+void displayMatrix(const vector<array<int, 11>> &matrix) {
   for (const auto &row : matrix) {
     for (int val : row) {
       cout << val << " ";
@@ -32,11 +43,60 @@ void displayArray(const array<int, 11> &array) {
   for (const auto &val : array) {
     cout << val << " ";
   }
+  cout << "\n";
+}
+
+void displayVector(const vector<int> &array) {
+  for (const auto &val : array) {
+    cout << val << " ";
+  }
+  cout << "\n";
 }
 
 vector<int> append(const vector<int> &v, int x) {
   vector<int> result = v;
   result.push_back(x);
+  return result;
+}
+
+vector<vector<int>> sliceMat(const vector<vector<int>> &matrix,
+                             int rowStart = 0, int rowEnd = -1,
+                             int colnStart = 0, int colnEnd = -1) {
+  vector<vector<int>> result;
+  if (rowEnd == -1) {
+    rowEnd = matrix.size();
+  }
+  if (colnEnd == -1) {
+    colnEnd = matrix[0].size();
+  }
+  for (int rowInd = rowStart; rowInd < rowEnd; rowInd++) {
+    vector<int> currentRow = matrix[rowInd];
+    vector<int> arraySlice = {};
+    for (int colnInd = colnStart; colnInd < colnEnd; colnInd++) {
+      arraySlice.push_back(currentRow[colnInd]);
+    }
+    result.push_back(arraySlice);
+  }
+  return result;
+}
+vector<vector<int>> sliceMat(const vector<array<int, 11>> &matrix,
+                             int rowStart = 0, int rowEnd = -1,
+                             int colnStart = 0, int colnEnd = -1) {
+  vector<vector<int>> result;
+  if (rowEnd == -1) {
+    rowEnd = matrix.size();
+  }
+  if (colnEnd == -1) {
+    colnEnd = 11;
+  }
+  for (int rowInd = rowStart; rowInd < rowEnd; rowInd++) {
+    array<int, 11> currentRow = matrix[rowInd];
+    vector<int> arraySlice = {};
+    for (int colnInd = colnStart; colnInd < colnEnd; colnInd++) {
+      arraySlice.push_back(currentRow[colnInd]);
+    }
+    result.push_back(arraySlice);
+  }
   return result;
 }
 
@@ -49,7 +109,6 @@ generator<array<int, 10>> genBis(int N, int selfInt, int genus, int a,
     if ((a == 0) || ((selfInt < -2) && (genus == 0))) {
       int numOnes = 2 * a - selfInt - 1;
       if ((0 <= numOnes) && (numOnes <= N - 1)) {
-        // TO DO: Write Concat Statment
         vector<int> bis(numOnes, -1);
         bis.insert(bis.end(), N - 1 - numOnes, 0);
         bis.push_back(1 - a);
@@ -150,7 +209,7 @@ generator<array<int, 11>> rowCands(int N, int selfInt, int genus, int aMin,
     aLowerBound = ceil((float)(selfInt + 1) / 2);
 
   int startA = max(aLowerBound, aMin);
-  for (int a = startA; a < trunc(aMax + 1); a++) {
+  for (int a = startA; a <= aMax; a++) {
     generator<array<int, 10>> biVecs = genBis(N, selfInt, genus, a);
     array<int, 1> a_array = {a};
     for (const auto &bis : biVecs) {
@@ -160,111 +219,253 @@ generator<array<int, 11>> rowCands(int N, int selfInt, int genus, int aMin,
   }
 }
 
-/* validBiPerms(goalDots, prevBiMat, bCtr) {
+// Helper: get sorted elements from map counter
+vector<int> counterElements(const map<int, int> &ctr) {
+  vector<int> elems;
+  for (const auto &[val, count] : ctr) {
+    for (int i = 0; i < count; i++)
+      elems.push_back(val);
+  }
+  sort(elems.begin(), elems.end());
+  return elems;
+}
 
-     }
+// Helper: dot product of a row of prevBiMat with a vector
+int dotProduct(const vector<vector<int>> &mat, int row,
+               const vector<int> &vec) {
+  int sum = 0;
+  for (int j = 0; j < vec.size(); j++)
+    sum += mat[row][j] * vec[j];
+  return sum;
+}
+
+// Helper: sum of a column subset of a matrix row
+int sumCols(const vector<vector<int>> &mat, int row,
+            const vector<int> &colInds) {
+  int sum = 0;
+  for (int col : colInds)
+    sum += mat[row][col];
+  return sum;
+}
+
+// Helper: delete columns from matrix
+vector<vector<int>> deleteCols(const vector<vector<int>> &mat,
+                               const vector<int> &colInds) {
+  vector<vector<int>> result;
+  for (const auto &row : mat) {
+    vector<int> newRow;
+    for (int j = 0; j < row.size(); j++) {
+      if (find(colInds.begin(), colInds.end(), j) == colInds.end())
+        newRow.push_back(row[j]);
+    }
+    result.push_back(newRow);
+  }
+  return result;
+}
+
+// Helper: generate combinations of r indices from 0..n-1
+generator<vector<int>> combinations(int n, int r) {
+  vector<int> indices(r);
+  iota(indices.begin(), indices.end(), 0);
+  co_yield indices;
+  while (true) {
+    int i = r - 1;
+    while (i >= 0 && indices[i] == i + n - r)
+      i--;
+    if (i < 0)
+      co_return;
+    indices[i]++;
+    for (int j = i + 1; j < r; j++)
+      indices[j] = indices[j - 1] + 1;
+    co_yield indices;
+  }
+}
+
+generator<vector<int>> validBiPerms(vector<int> goalDots,
+                                    vector<vector<int>> prevBiMat,
+                                    map<int, int> bCtr) {
+  // Sort prevBiMat rows
+  vector<vector<int>> sortedPrevBis = prevBiMat;
+  for (auto &row : sortedPrevBis)
+    sort(row.begin(), row.end());
+
+  vector<int> sortedNewBis = counterElements(bCtr); // already sorted
+  vector<int> flippedNewBis(sortedNewBis.rbegin(), sortedNewBis.rend());
+
+  int numRows = prevBiMat.size();
+
+  // Compute maxDots and minDots
+  vector<int> maxDots(numRows), minDots(numRows);
+  for (int i = 0; i < numRows; i++) {
+    maxDots[i] = dotProduct(sortedPrevBis, i, sortedNewBis);
+    minDots[i] = dotProduct(sortedPrevBis, i, flippedNewBis);
+  }
+
+  // Check bounds
+  for (int i = 0; i < numRows; i++) {
+    if (goalDots[i] < minDots[i] || goalDots[i] > maxDots[i])
+      co_return;
+  }
+
+  // Base case: one unique element
+  if (bCtr.size() == 1) {
+    co_yield counterElements(bCtr);
+    co_return;
+  }
+
+  int numCols = sortedNewBis.size();
+
+  // Find element with largest absolute value
+  int biToAssign =
+      max_element(bCtr.begin(), bCtr.end(), [](const auto &a, const auto &b) {
+        return abs(a.first) < abs(b.first);
+      })->first;
+  int numCopies = bCtr[biToAssign];
+  bCtr.erase(biToAssign);
+
+  for (const auto &colInds : combinations(numCols, numCopies)) {
+    // Compute dot contributions and new goal dots
+    vector<int> newGoalDots(numRows);
+    for (int i = 0; i < numRows; i++)
+      newGoalDots[i] =
+          goalDots[i] - biToAssign * sumCols(prevBiMat, i, colInds);
+
+    vector<vector<int>> newPrevBiMat = deleteCols(prevBiMat, colInds);
+
+    for (auto subPerm : validBiPerms(newGoalDots, newPrevBiMat, bCtr)) {
+      vector<int> fullPerm = subPerm;
+      // Insert left to right to restore original order
+      for (int i = 0; i < colInds.size(); i++)
+        fullPerm.insert(fullPerm.begin() + colInds[i], biToAssign);
+      co_yield fullPerm;
+    }
+  }
+
+  bCtr[biToAssign] = numCopies; // restore counter
+}
 
 namespace operations_research {
 namespace sat {
-vector<vector<array<int, 11>>>
-solveNextRow(const vector<array<int, 11>> &subMat,
-             vector<vector<int>> &interNums, int selfInt, int genus) {
+vector<array<int, 11>> solveNextRow(const vector<array<int, 11>> &subMat,
+                                    vector<vector<int>> &interNums, int selfInt,
+                                    int genus, int aMax) {
+
   int numPrevRows = subMat.size();
-  int N = 11;
+  int N = 10;
 
   CpModelBuilder model;
 
-  const intVar a = model.NewIntVar(1, aMax, "a");
-  int biUB = min((double)(3 * aMax - selfInt + 2 * genus - 2),
-                 trunc(sqrt((double)(aMax * aMax - selfInt))));
+  const IntVar a = model.NewIntVar(Domain(1, aMax)).WithName("a");
+  int biUB = (int)min((double)(3 * aMax - selfInt + 2 * genus - 2),
+                      trunc(sqrt((double)(aMax * aMax - selfInt))));
   vector<IntVar> b;
   for (int i = 0; i < N; i++) {
-    b.push_back(model.NewIntVar(0, biUB, "b_" + to_string(i)));
+    b.push_back(model.NewIntVar(Domain(0, biUB)).WithName("b_" + to_string(i)));
   }
 
   for (int rowInd = 0; rowInd < numPrevRows; rowInd++) {
-    int expr = trunc(subMat[rowInt][0]) * a;
+    LinearExpr expr = LinearExpr::Term(a, subMat[rowInd][0]);
     for (int i = 0; i < N; i++) {
-      expr += trunc(subMat[rowInd][i + 1]);
+      expr += LinearExpr::Term(b[i], subMat[rowInd][i + 1]);
     }
-    model.Add(expr == trunc(interNums[rowInd]));
+    model.AddEquality(expr, interNums[0][rowInd]);
   }
 
-  model.Add(accumulate(b.begin(), b.end(), 0) ==
-            3 * a - selfInt + 2 * genus - 2);
+  model.AddEquality(LinearExpr::Sum(b),
+                    LinearExpr::Term(a, 3) - selfInt + 2 * genus - 2);
 
-  vector<intVar> bisSquared = {};
-  for (i = 0; i < N; i++) {
-    intVar bSquared = model.NewIntVar(0, biUB * *2, format("b_{}_squared", i));
-    model.AddMultiplicationEquality({bSquared[i], bSquared[i]});
+  vector<IntVar> bisSquared = {};
+  for (int i = 0; i < N; i++) {
+    IntVar bSquared = model.NewIntVar(Domain(0, biUB * biUB))
+                          .WithName("b_" + to_string(i) + "_squared");
+    model.AddMultiplicationEquality(bSquared, {b[i], b[i]});
     bisSquared.push_back(bSquared);
   }
 
-  intVar aSquared = model.NewIntVar(1, aMax * *2, "a_squared");
+  IntVar aSquared =
+      model.NewIntVar(Domain(1, aMax * aMax)).WithName("a_squared");
   model.AddMultiplicationEquality(aSquared, {a, a});
-  model.Add(accumulate(bisSquared.begin(), bisSquared.end(), 0) ==
-            aSquared - selfInt);
+  model.AddEquality(LinearExpr::Sum(bisSquared),
+                    LinearExpr::Term(aSquared, 1) - selfInt);
 
   vector<int> sameAsRightNeighbor = {};
-  for (i = 0; i < N - 1; i++) {
+  for (int i = 0; i < N - 1; i++) {
     // TO DO: Conditional involving slicing subMats
-    if (subMat[:][i + 1] == subMat[:][i + 2]) {
-      model.Add(b[i] >= b[i + 1]);
+    if (sliceMat(subMat, 0, -1, i + 1, i + 2) ==
+        sliceMat(subMat, 0, -1, i + 2, i + 3)) {
+      model.AddGreaterOrEqual(b[i], b[i + 1]);
       sameAsRightNeighbor.push_back(i);
     }
   }
 
-  Model model;
-  // TO DO: Fix Solutions Initialization
-  solver = cp_model.CpSolver();
   SatParameters parameters;
-  solver.parameters.enumerate_all_solutions(true);
-  model.Add(NewSatParameters(parameters));
+  parameters.set_enumerate_all_solutions(true);
 
   vector<array<int, 11>> sols = {};
 
-  class SolutionCollector : public cp_model.CpSolverSolutionCallback {
-  public:
-    void on_solution_callback()
-        :
-
-          array<int, 1> a_array = Value(a);
-    array<int, 10> bis_array;
-    for (int i = 0; i < 10; i++) {
-      bis_array[i] = -1 * Value(b[i])
+  Model orModel;
+  orModel.Add(NewSatParameters(parameters));
+  orModel.Add(NewFeasibleSolutionObserver([&](const CpSolverResponse &r) {
+    array<int, 11> sol;
+    sol[0] = SolutionIntegerValue(r, a);
+    for (int i = 0; i < N; i++) {
+      sol[i + 1] = -SolutionIntegerValue(r, b[i]);
     }
-    sols.push_back(append(a_array, bis_array))
-  }
+    sols.push_back(sol);
+  }));
 
-  int aMin = 0;
-  if selfInt
-    < -2 aMin = ceil((double)(selfInt + 1) / 2);
-  for (currA = aMin; currA < 1, currA++) {
-    numOnes = 2 * currA - selfInt - 1;
-    if ((0 <= numOnes) && (numOnes <= N - 1)) {
-      goalBDots = subMat[:, 0] * currA - interNums;
-      // TO DO: Counter Stuff
-      for (const auto &perm :
-           validBiPerms(goalBDots, subMat[:] [1:], negBCounter)) {
-        bool discard = false;
-        for (const auto &i : sameAsRightNeighbor) {
-          if (perm[i] < perm[i + 1]) {
-            discard = true;
-            break;
-          }
-          if !(discard) {
-            array<int, 1> currA_array = {currA};
-            sols.push_back(append(currA_array, perm));
-          }
-        }
-      }
-    }
-  }
+  SolveCpModel(model.Build(), &orModel);
+  /* Debug Tools
+std::cout << model.Build().DebugString() << std::endl << flush;
+std::cout << model.Build().variables_size() << std::endl << flush;
+std::cout << model.Build().constraints_size() << std::endl << flush;*/
+  // a <= 0 case
+
+  /*
+   int aMin = 0;
+   if (selfInt < -2)
+     aMin = ceil((double)(selfInt + 1) / 2);
+   for (int currA = aMin; currA < 1; currA++) {
+     int numOnes = 2 * currA - selfInt - 1;
+     if ((0 <= numOnes) && (numOnes <= N - 1)) {
+       vector<int> goalBDots;
+       vector<vector<int>> firstCol = sliceMat(subMat, 0, -1, 0, 1);
+       for (int i = 0; i < interNums[0].size(); i++) {
+         if (i < firstCol[0].size()) {
+           goalBDots.push_back(firstCol[0][i] * currA - interNums[0][i]);
+         } else {
+           goalBDots.push_back(-interNums[0][i]);
+         }
+       }
+       map<int, int> negBCounter;
+       negBCounter[-1] = numOnes;
+       negBCounter[0] = N - 1 - numOnes;
+       negBCounter[-currA + 1] = 1;
+
+       for (const auto &perm : validBiPerms(
+                goalBDots, sliceMat(subMat, 0, -1, 1, -1), negBCounter)) {
+         bool discard = false;
+         for (const auto &i : sameAsRightNeighbor) {
+           if (perm[i] < perm[i + 1]) {
+             discard = true;
+             break;
+           }
+         }
+         if (!discard) {
+           array<int, 1> currA_array = {currA};
+           array<int, 11> sol;
+           sol[0] = currA;
+           copy(perm.begin(), perm.end(), sol.begin() + 1);
+           // sols.push_back(sol);
+         }
+       }
+     }
+}*/
 
   return sols;
 }
 } // namespace sat
-} // namespace operations_research */
+} // namespace operations_research
 
 int main(int argc, char *argv[]) {
 
@@ -294,20 +495,89 @@ int main(int argc, char *argv[]) {
       {0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 1},
       {1, 0, 0, 0, 0, 0, 0, 0, 1, 1, -1}};
 
-  int aMaxes[11] = {11, 36, 18, 12, 9, 6, 12, 6, 35, 4, 4};
-  int genera[11] = {0};
+  array<int, 11> aMaxes = {11, 36, 18, 12, 9, 6, 12, 6, 35, 4, 4};
+  array<int, 11> genera = {0};
+
+  array<int, 11> keyArray;
+
+  for (int i = 0; i < 11; i++) {
+    keyArray[i] = aMaxes[i] * aMaxes[i] - intMat[i][i];
+  }
+
+  array<int, 11> indices;
+  iota(indices.begin(), indices.end(), 0);
+  sort(indices.begin(), indices.end(),
+       [&keyArray](int i, int j) { return keyArray[i] < keyArray[j]; });
+
+  vector<array<int, 11>> intMatReOrd(11);
+  array<int, 11> aMaxesReOrd;
+  array<int, 11> generaReOrd;
+
+  for (int i = 0; i < 11; i++) {
+    aMaxesReOrd[i] = aMaxes[indices[i]];
+    generaReOrd[i] = genera[indices[i]];
+    for (int j = 0; j < 11; j++) {
+      intMatReOrd[i][j] = intMat[indices[i]][indices[j]];
+    }
+  }
 
   // if (rowInd == -1) {
   generator<array<int, 11>> firstRows =
-      rowCands(N, intMat[0][0], genera[0], -1000000, aMaxes[0]);
+      rowCands(N, intMatReOrd[0][0], generaReOrd[0], -1000000, aMaxesReOrd[0]);
+
+  rowInd = 0;
+  vector<vector<array<int, 11>>> newSols;
+  vector<vector<int>> intMatSlice =
+      sliceMat(intMatReOrd, rowInd + 1, rowInd + 2, 0, rowInd + 1);
+  int count = 0;
   for (const auto &firstRow : firstRows) {
-    displayArray(firstRow);
+    count++;
+    vector<array<int, 11>> firstRowVect = {firstRow};
+    vector<array<int, 11>> nextRows = operations_research::sat::solveNextRow(
+        firstRowVect, intMatSlice, intMatReOrd[rowInd + 1][rowInd + 1],
+        generaReOrd[rowInd + 1], aMaxesReOrd[rowInd + 1]);
+
+    sort(nextRows.begin(), nextRows.end());
+    nextRows.erase(unique(nextRows.begin(), nextRows.end()), nextRows.end());
+    for (const auto &newRow : nextRows) {
+      vector<array<int, 11>> newSol;
+      newSol.insert(newSol.end(), firstRowVect.begin(), firstRowVect.end());
+      newSol.push_back(newRow);
+      newSols.push_back(newSol);
+    }
+  }
+  cout << count << "\n";
+
+  rowInd++;
+  for (const auto &sol : newSols) {
+    displayMatrix(sol);
     cout << "\n";
-    //}
   }
 
+  while (rowInd < 11) {
+    cout << newSols.size() << "\n" << flush;
+    vector<vector<array<int, 11>>> oldSols = newSols;
+    newSols.clear();
+    vector<vector<int>> intMatSlice =
+        sliceMat(intMatReOrd, rowInd + 1, rowInd + 2, 0, rowInd + 2);
+    for (const auto &subMat : oldSols) {
+      vector<array<int, 11>> nextRows = operations_research::sat::solveNextRow(
+          subMat, intMatSlice, intMatReOrd[rowInd + 1][rowInd + 1],
+          generaReOrd[rowInd + 1], aMaxesReOrd[rowInd + 1]);
+      sort(nextRows.begin(), nextRows.end());
+      nextRows.erase(unique(nextRows.begin(), nextRows.end()), nextRows.end());
+      for (const auto &newRow : nextRows) {
+        vector<array<int, 11>> newSol;
+        newSol.insert(newSol.end(), subMat.begin(), subMat.end());
+        newSol.push_back(newRow);
+        newSols.push_back(newSol);
+      }
+    }
+    rowInd++;
+  }
+
+  cout << newSols.size();
   // TO DO : Figure out how to slice matrices (<vector<array<int, 11>> to
-  // <vector<vector<int>>)
-  // vector<array<int, 11>> nextRows = solveNextRow(subMat, intMat, intMat[1,
-  // 1], 0, aMaxes[1]);
+  // vector<array<int, 11>> nextRows = solveNextRow(subMat, intMat,
+  // intMat[1, 1], 0, aMaxes[1]);
 }

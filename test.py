@@ -2,6 +2,7 @@ from itertools import combinations
 from sys import argv
 from typing import Counter
 import math
+import sys
 from ortools.sat.python import cp_model
 import numpy as np
 import os
@@ -236,7 +237,7 @@ def solveNextRow(subMat: np.ndarray, interNums: np.ndarray, selfInt: int, genus:
     collector = SolutionCollector()
     solver.Solve(model, collector)
 
-    # handle a <= 0 case, with only one solution (plus permutations) per a
+    #handle a <= 0 case, with only one solution (plus permutations) per a
     aMin = 0 if selfInt >= -2 else math.ceil((selfInt + 1) / 2) # Lemma 3.4
     for currA in range(aMin, 1):
         numOnes = 2 * currA - selfInt - 1
@@ -250,7 +251,7 @@ def solveNextRow(subMat: np.ndarray, interNums: np.ndarray, selfInt: int, genus:
                         discard = True
                         break
                 if not discard:
-                    sols.append([currA] + perm)
+                   sols.append([currA] + perm)
 
     return sols
 
@@ -370,7 +371,25 @@ def main_local():
     aMaxes = np.load("./data/aBounds.npy")
     genera = np.zeros(10)
     
-    print(np.array([np.array(firstRow).reshape(1, -1) for firstRow in rowCands(N - 1, Q[0, 0], genera[0], aMin = -1e6, aMax = aMaxes[0])]))
+    subMats = np.array([np.array(firstRow).reshape(1, -1) for firstRow in rowCands(N - 1, Q[0, 0], genera[0], aMin = -1e6, aMax = aMaxes[0])])
+    newSols = []
+    rowInd = 0
+    count = 0 
+    for subMat in subMats:
+        print(subMat)
+        print(Q[rowInd + 1, :rowInd + 2]) 
+        print(Q[rowInd + 1, rowInd + 1]) 
+        print(0) 
+        print(aMaxes[rowInd + 1])
+        nextRows = solveNextRow(subMat, interNums = Q[rowInd + 1, :rowInd + 1], selfInt = Q[rowInd + 1, rowInd + 1], genus = 0, aMax = aMaxes[rowInd + 1])
+        print("subMat:", subMat)
+        #print("nextRows:")
+
+        for row in nextRows:
+            count += 1
+
+    print(count)
+
 
 if __name__ == "__main__":
     main_local()
