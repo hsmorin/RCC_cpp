@@ -186,6 +186,61 @@ vector<array<int, M>> reconstructMatrix(const tree<array<int, M>> &matTree,
   return matrix;
 }
 
+void saveSubtree(const tree<array<int, M>> &matTree,
+                 const vector<tree<array<int, M>>::iterator> &leaves, int start,
+                 int end, const string &filename) {
+  ofstream out(filename, ios::binary);
+
+  set<void *> written;
+  for (int i = start; i < end; i++) {
+    // Reconstruct path for each leaf
+    vector<tree<array<int, M>>::iterator> path;
+    auto it = leaves[i];
+    while (matTree.depth(it) > 0) {
+      path.push_back(it);
+      it = matTree.parent(it);
+    }
+    reverse(path.begin(), path.end());
+
+    for (auto &nodeIt : path) {
+      void *ptr = nodeIt.node;
+      if (written.find(ptr) == written.end()) {
+        int depth = matTree.depth(nodeIt);
+        out.write(reinterpret_cast<const char *>(&depth), sizeof(int));
+        out.write(reinterpret_cast<const char *>((*nodeIt).data()),
+                  M * sizeof(int));
+        written.insert(ptr);
+      }
+    }
+  }
+}
+
+void saveTreeChunks(const tree<array<int, M>> &matTree, int rowInd,
+                    int numSplits) {
+  // Collect all leaves
+  vector<tree<array<int, M>>::iterator> leaves;
+  for (auto it = matTree.begin_leaf(); it != matTree.end_leaf(); ++it) {
+    if (matTree.depth(it) > 0)
+      leaves.push_back(it);
+  }
+
+  int total = leaves.size();
+  int chunkSize = (total + numSplits - 1) / numSplits; // ceiling division
+
+  for (int i = 0; i < numSplits; i++) {
+    int start = i * chunkSize;
+    int end = min(start + chunkSize, total);
+    if (start >= total)
+      break; // fewer leaves than chunks
+
+    string filename =
+        "matTree_" + to_string(i) + "_" + to_string(rowInd) + ".tr";
+    saveSubtree(matTree, leaves, start, end, filename);
+    cout << "Saved chunk " << i << " (" << (end - start) << " leaves) to "
+         << filename << "\n";
+  }
+}
+
 // Slices a Generic Matrix Type
 template <typename MatrixType>
 vector<vector<int>> sliceMat(const MatrixType &matrix, int rowStart = 0,
@@ -602,7 +657,7 @@ vector<array<int, M>> solveNextRow(const vector<array<int, M>> &subMat,
 
 // Main function using trees
 // Computes everthing at once
-int mainLr() {
+int mainTr() {
 
   int rowInd = 0;
 
@@ -709,88 +764,69 @@ int mainLr() {
   return 0;
 }
 
-// Computes One Step at a time and Saves the Output
-//  Usage : ./main inputFileName.tr outputFileName.tr
 int main(int argc, char *argv[]) {
-
-  if (argc != 3) {
-    cerr << "Usage: " << argv[0] << "inputFileName.tr outputFileName.tr\n";
+  if (argc != 4) {
+    cerr << "Usage: " << argv[0] << " filePrefix rowIndex NumberOfSplits\n";
     return 1;
   }
 
-  string inputFileName;
-  string outputFileName;
+  string filePrefix = argv[1];
+  int rowInd;
+  int numSplits;
 
-  inputFileName = argv[1];
-  outputFileName = argv[2];
-  // Sort problem data by the keyArray
-  array<int, M> keyArray;
+  stringstream convert2{argv[2]};
+  stringstream convert3{argv[3]};
 
-  for (int i = 0; i < M; i++) {
-    keyArray[i] = aMaxes[i] * aMaxes[i] - intMat[i][i];
+  if (!(convert2 >> rowInd)) {
+    cerr << "Usage: " << argv[0] << " filePrefix rowIndex NumberOfSplits\n";
+    return 1;
   }
 
-  array<int, M> indices;
-  iota(indices.begin(), indices.end(), 0);
-  sort(indices.begin(), indices.end(),
-       [&keyArray](int i, int j) { return keyArray[i] < keyArray[j]; });
-
-  vector<array<int, M>> intMatReOrd(M);
-  array<int, M> aMaxesReOrd;
-  array<int, M> generaReOrd;
-
-  for (int i = 0; i < M; i++) {
-    aMaxesReOrd[i] = aMaxes[indices[i]];
-    generaReOrd[i] = genera[indices[i]];
-    for (int j = 0; j < M; j++) {
-      intMatReOrd[i][j] = intMat[indices[i]][indices[j]];
-    }
+  if (!(convert3 >> numSplits)) {
+    cerr << "Usage: " << argv[0] << " filePrefix rowIndex NumberOfSplits\n";
+    return 1;
   }
 
-  auto matTree = loadTree(inputFileName);
+  string inputFilename = filePrefix + "_" + to_string(rowInd) + ".tr";
+  auto matTree = loadTree(inputFilename);
+  saveTreeChunks(matTree, rowInd, numSplits);
+  return 0;
+}
+
+int mainTR() {
 
   int count = 0;
+  auto matTree = loadTree("matTree_4.tr");
   vector<tree<array<int, M>>::iterator> leaves;
   for (auto it = matTree.begin_leaf(); it != matTree.end_leaf(); it++) {
     leaves.push_back(it);
   }
 
-  if (leaves.empty()) {
-    cerr << argv[0] << " " << inputFileName << " " << outputFileName
-         << " ran into an error: MatTree Is Empty please select a different "
-            "file \n";
-    return 1;
-  }
+  for (int jobInd = 0; jobInd < 10; jobInd++) {
+    auto matSubTree = loadTree("matTree_" + to_string(jobInd) + "_4.tr");
 
-  auto firstMat = reconstructMatrix(matTree, leaves[0]);
-  int rowInd = firstMat.size() - 1;
-  vector<vector<int>> intMatSlice =
-      sliceMat(intMatReOrd, rowInd + 1, rowInd + 2, 0, rowInd + 2);
-
-  for (const auto &leafIt : leaves) {
-    vector<array<int, M>> subMat = reconstructMatrix(matTree, leafIt);
-
-    if (subMat.size() != rowInd + 1) {
-      matTree.erase(leafIt);
-      continue;
+    vector<tree<array<int, M>>::iterator> subLeaves;
+    for (auto it = matSubTree.begin_leaf(); it != matSubTree.end_leaf(); it++) {
+      subLeaves.push_back(it);
     }
 
-    vector<array<int, M>> nextRows = operations_research::sat::solveNextRow(
-        subMat, intMatSlice, intMatReOrd[rowInd + 1][rowInd + 1],
-        generaReOrd[rowInd + 1], aMaxesReOrd[rowInd + 1]);
+    for (auto leaf : subLeaves) {
+      auto mat1 = reconstructMatrix(matSubTree, leaf);
 
-    if (nextRows.empty()) {
-      matTree.erase(leafIt);
-      continue;
-    }
+      auto mat2 = reconstructMatrix(matTree, leaves[count]);
 
-    for (const auto &newRow : nextRows) {
-      matTree.append_child(leafIt, newRow);
-      count++;
+      if (mat1 == mat2) {
+        cout << ":)";
+      } else {
+        displayMatrix(mat1);
+        displayMatrix(mat2);
+        cout << ":(";
+        abort();
+      }
+      count += 1;
+      cout << "\n";
     }
   }
-  rowInd++;
-  cout << "Number of Leaves at Depth " << rowInd << ": " << count << "\n";
-  saveTree(matTree, outputFileName);
+  cout << "Count: " << count;
   return 0;
 }

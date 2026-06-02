@@ -602,7 +602,7 @@ vector<array<int, M>> solveNextRow(const vector<array<int, M>> &subMat,
 
 // Main function using trees
 // Computes everthing at once
-int mainLr() {
+int mainTr() {
 
   int rowInd = 0;
 
@@ -755,42 +755,9 @@ int main(int argc, char *argv[]) {
     leaves.push_back(it);
   }
 
-  if (leaves.empty()) {
-    cerr << argv[0] << " " << inputFileName << " " << outputFileName
-         << " ran into an error: MatTree Is Empty please select a different "
-            "file \n";
-    return 1;
+  for (auto leaf : leaves) {
+    displayMatrix(reconstructMatrix(matTree, leaf));
+    cout << "\n";
   }
-
-  auto firstMat = reconstructMatrix(matTree, leaves[0]);
-  int rowInd = firstMat.size() - 1;
-  vector<vector<int>> intMatSlice =
-      sliceMat(intMatReOrd, rowInd + 1, rowInd + 2, 0, rowInd + 2);
-
-  for (const auto &leafIt : leaves) {
-    vector<array<int, M>> subMat = reconstructMatrix(matTree, leafIt);
-
-    if (subMat.size() != rowInd + 1) {
-      matTree.erase(leafIt);
-      continue;
-    }
-
-    vector<array<int, M>> nextRows = operations_research::sat::solveNextRow(
-        subMat, intMatSlice, intMatReOrd[rowInd + 1][rowInd + 1],
-        generaReOrd[rowInd + 1], aMaxesReOrd[rowInd + 1]);
-
-    if (nextRows.empty()) {
-      matTree.erase(leafIt);
-      continue;
-    }
-
-    for (const auto &newRow : nextRows) {
-      matTree.append_child(leafIt, newRow);
-      count++;
-    }
-  }
-  rowInd++;
-  cout << "Number of Leaves at Depth " << rowInd << ": " << count << "\n";
-  saveTree(matTree, outputFileName);
   return 0;
 }

@@ -1,0 +1,2 @@
+cmake --build build
+[ 50%] Building CXX object CMakeFiles/cpp.dir/src/findIndicatorMats.cpp.o

@@ -791,6 +791,7 @@ int main(int argc, char *argv[]) {
   }
   rowInd++;
   cout << "Number of Leaves at Depth " << rowInd << ": " << count << "\n";
+  pruneShallowLeaves(matTree, rowInd);
   saveTree(matTree, outputFileName);
   return 0;
 }
