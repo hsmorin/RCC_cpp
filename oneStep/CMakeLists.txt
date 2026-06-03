@@ -5,10 +5,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_PREFIX_PATH 
-    "/home/linuxbrew/.linuxbrew"
-    "/home/linuxbrew/.linuxbrew/opt/clp"
-    "/home/linuxbrew/.linuxbrew/opt/cbc"
-    "/home/linuxbrew/.linuxbrew/opt/glpk"
+    "../cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544"
 )
 
 find_package(ortools REQUIRED)
