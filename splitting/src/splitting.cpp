@@ -215,8 +215,8 @@ void saveSubtree(const tree<array<int, M>> &matTree,
   }
 }
 
-void saveTreeChunks(const tree<array<int, M>> &matTree, int rowInd,
-                    int numSplits) {
+void saveTreeChunks(const tree<array<int, M>> &matTree, string filePrefix,
+                    int rowInd, int numSplits) {
   // Collect all leaves
   vector<tree<array<int, M>>::iterator> leaves;
   for (auto it = matTree.begin_leaf(); it != matTree.end_leaf(); ++it) {
@@ -234,7 +234,7 @@ void saveTreeChunks(const tree<array<int, M>> &matTree, int rowInd,
       break; // fewer leaves than chunks
 
     string filename =
-        "matTree_" + to_string(i) + "_" + to_string(rowInd) + ".tr";
+        filePrefix + to_string(i) + "_" + to_string(rowInd) + ".tr";
     saveSubtree(matTree, leaves, start, end, filename);
     cout << "Saved chunk " << i << " (" << (end - start) << " leaves) to "
          << filename << "\n";
@@ -787,9 +787,9 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
-  string inputFilename = filePrefix + "_" + to_string(rowInd) + ".tr";
+  string inputFilename = filePrefix + to_string(rowInd) + ".tr";
   auto matTree = loadTree(inputFilename);
-  saveTreeChunks(matTree, rowInd, numSplits);
+  saveTreeChunks(matTree, filePrefix, rowInd, numSplits);
   return 0;
 }
 
