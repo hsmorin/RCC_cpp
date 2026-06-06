@@ -4,7 +4,9 @@ project(main)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(BUILD_SHARED_LIBS OFF)
-
+set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 set(CMAKE_PREFIX_PATH 
     "/home/linuxbrew/.linuxbrew"
     "/home/linuxbrew/.linuxbrew/opt/clp"

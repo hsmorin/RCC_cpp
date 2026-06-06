@@ -151,6 +151,51 @@ tree<array<int, M>> loadTree(const string &filename) {
   return matTree;
 }
 
+void mergeInto(tree<array<int, M>> &target, const tree<array<int, M>> &source) {
+  // For each node in source (pre-order), find or create it in target
+  for (auto it = source.begin(); it != source.end(); ++it) {
+    if (source.depth(it) == 0)
+      continue; // skip sentinel
+
+    // Reconstruct path from root to this node in source
+    vector<array<int, M>> path;
+    auto sit = it;
+    while (source.depth(sit) > 0) {
+      path.push_back(*sit);
+      sit = source.parent(sit);
+    }
+    reverse(path.begin(), path.end());
+
+    // Walk/create the same path in target
+    auto targetNode = target.begin(); // sentinel root
+    for (const auto &row : path) {
+      bool found = false;
+      for (auto sib = target.begin(targetNode); sib != target.end(targetNode);
+           ++sib) {
+        if (*sib == row) {
+          targetNode = sib;
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        targetNode = target.append_child(targetNode, row);
+      }
+    }
+  }
+}
+
+tree<array<int, M>> mergeTrees(const vector<tree<array<int, M>>> &trees) {
+  tree<array<int, M>> result;
+  array<int, M> sentinel = {0};
+  result.insert(result.begin(), sentinel);
+
+  for (const auto &t : trees) {
+    mergeInto(result, t);
+  }
+  return result;
+}
+
 void pruneShallowLeaves(tree<array<int, M>> &matTree, int targetDepth) {
   bool changed = true;
   // Repeat until no more shallow leaves exist
@@ -765,68 +810,103 @@ int mainTr() {
 }
 
 int main(int argc, char *argv[]) {
-  if (argc != 4) {
-    cerr << "Usage: " << argv[0] << " filePrefix rowIndex NumberOfSplits\n";
+  if (argc != 4 && argc != 5) {
+    cerr << "Usage: " << argv[0]
+         << "filePrefix rowIndex newNumberOfSplits numberOfCurrentSplits\n"
+         << "filePrefix rowIndex newNumberOfSplits\n";
     return 1;
   }
 
   string filePrefix = argv[1];
   int rowInd;
   int numSplits;
+  int numCurrSplits;
 
   stringstream convert2{argv[2]};
   stringstream convert3{argv[3]};
 
+  if (argc == 5) {
+    stringstream convert4{argv[4]};
+    if (!(convert4 >> numCurrSplits)) {
+      cerr << "Error: " << argv[4] << " not an integer.";
+      return 1;
+    }
+  }
+
   if (!(convert2 >> rowInd)) {
-    cerr << "Usage: " << argv[0] << " filePrefix rowIndex NumberOfSplits\n";
+    cerr << "Error: " << argv[2] << " not an integer.";
     return 1;
   }
 
   if (!(convert3 >> numSplits)) {
-    cerr << "Usage: " << argv[0] << " filePrefix rowIndex NumberOfSplits\n";
+    cerr << "Error: " << argv[3] << " not an integer.";
     return 1;
   }
 
-  string inputFilename = filePrefix + to_string(rowInd) + ".tr";
-  auto matTree = loadTree(inputFilename);
+  tree<array<int, M>> matTree;
+  if (argc == 5) {
+    vector<tree<array<int, M>>> chunks;
+    for (int jobInd = 0; jobInd < numCurrSplits; jobInd++) {
+      string inputFilename =
+          filePrefix + to_string(jobInd) + "_" + to_string(rowInd) + ".tr";
+      chunks.push_back(loadTree(inputFilename));
+    }
+    matTree = mergeTrees(chunks);
+  } else if (argc == 4) {
+    string inputFileName = filePrefix + to_string(rowInd) + ".tr";
+    matTree = loadTree(inputFileName);
+  }
+
   saveTreeChunks(matTree, filePrefix, rowInd, numSplits);
   return 0;
 }
 
-int mainTR() {
+int mainTS(int argc, char *argv[]) {
+  if (argc != 4) {
+    cerr << "Usage: " << argv[0] << "filePrefix numJobs rowInd\n";
+    return 1;
+  }
+
+  string filePrefix = argv[1];
+  int rowInd;
+  int numJobs;
+
+  stringstream convert2{argv[2]};
+  stringstream convert3{argv[3]};
+
+  if (!(convert2 >> numJobs)) {
+    cerr << "Error: " << argv[2] << " not an integer.";
+    return 1;
+  }
+
+  if (!(convert3 >> rowInd)) {
+    cerr << "Error: " << argv[3] << " not an integer.";
+    return 1;
+  }
 
   int count = 0;
-  auto matTree = loadTree("matTree_4.tr");
+  auto matTree = loadTree("cpp6.tr");
   vector<tree<array<int, M>>::iterator> leaves;
-  for (auto it = matTree.begin_leaf(); it != matTree.end_leaf(); it++) {
+  for (auto it = matTree.begin_leaf(); it != matTree.end_leaf(); ++it) {
     leaves.push_back(it);
   }
 
-  for (int jobInd = 0; jobInd < 10; jobInd++) {
-    auto matSubTree = loadTree("matTree_" + to_string(jobInd) + "_4.tr");
-
-    vector<tree<array<int, M>>::iterator> subLeaves;
-    for (auto it = matSubTree.begin_leaf(); it != matSubTree.end_leaf(); it++) {
-      subLeaves.push_back(it);
-    }
-
-    for (auto leaf : subLeaves) {
-      auto mat1 = reconstructMatrix(matSubTree, leaf);
-
-      auto mat2 = reconstructMatrix(matTree, leaves[count]);
-
-      if (mat1 == mat2) {
-        cout << ":)";
+  for (int jobInd = 0; jobInd < numJobs; jobInd++) {
+    string fileName =
+        filePrefix + to_string(jobInd) + "_" + to_string(rowInd) + ".tr";
+    auto subMatTree = loadTree(fileName);
+    for (auto it = subMatTree.begin_leaf(); it != subMatTree.end_leaf(); ++it) {
+      auto subMat1 = reconstructMatrix(matTree, leaves[count]);
+      auto subMat2 = reconstructMatrix(subMatTree, it);
+      if (subMat1 == subMat2) {
+        cout << ":)\n" << flush;
       } else {
-        displayMatrix(mat1);
-        displayMatrix(mat2);
-        cout << ":(";
+        cout << ":(" << flush;
         abort();
       }
-      count += 1;
-      cout << "\n";
+      count++;
     }
   }
-  cout << "Count: " << count;
+  cout << "Number of matrices in " << numJobs << " jobs is " << count << "\n";
   return 0;
 }
