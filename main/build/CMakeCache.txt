@@ -14,15 +14,6 @@
 # EXTERNAL cache entries
 ########################
 
-//Path to a file.
-BZIP2_INCLUDE_DIR:PATH=/home/linuxbrew/.linuxbrew/include
-
-//Path to a library.
-BZIP2_LIBRARY_DEBUG:FILEPATH=BZIP2_LIBRARY_DEBUG-NOTFOUND
-
-//Path to a library.
-BZIP2_LIBRARY_RELEASE:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libbz2.so
-
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -231,13 +222,19 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //The directory containing a CMake configuration file for Cbc.
-Cbc_DIR:PATH=Cbc_DIR-NOTFOUND
+Cbc_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/Cbc
+
+//The directory containing a CMake configuration file for Cgl.
+Cgl_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/Cgl
 
 //The directory containing a CMake configuration file for Clp.
-Clp_DIR:PATH=Clp_DIR-NOTFOUND
+Clp_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/Clp
+
+//The directory containing a CMake configuration file for CoinUtils.
+CoinUtils_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/CoinUtils
 
 //The directory containing a CMake configuration file for Eigen3.
-Eigen3_DIR:PATH=/home/linuxbrew/.linuxbrew/share/eigen3/cmake
+Eigen3_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/share/eigen3/cmake
 
 //Directory under which to collect all populated content
 FETCHCONTENT_BASE_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/main/build/_deps
@@ -262,68 +259,26 @@ FETCHCONTENT_UPDATES_DISCONNECTED_TREEHH:BOOL=OFF
 //Git command line client
 GIT_EXECUTABLE:FILEPATH=/usr/bin/git
 
-//Path to a library.
-GMPXX_LIBRARY:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libgmpxx.so
+//The directory containing a CMake configuration file for Osi.
+Osi_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/Osi
 
-//Path to a file.
-GMP_INCLUDE_DIRS:PATH=/home/linuxbrew/.linuxbrew/include
-
-//Path to a library.
-GMP_LIBRARY:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libgmp.so
-
-//Path to a file.
-MPFR_INCLUDE_DIRS:PATH=/home/linuxbrew/.linuxbrew/include
-
-//Path to a library.
-MPFR_LIBRARY:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libmpfr.so
-
-//Arguments to supply to pkg-config
-PKG_CONFIG_ARGN:STRING=
-
-//pkg-config executable
-PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
-
-//Path to a file.
-Protobuf_INCLUDE_DIR:PATH=/home/linuxbrew/.linuxbrew/include
-
-//Path to a library.
-Protobuf_LIBRARY_DEBUG:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libprotobuf.so
-
-//Path to a library.
-Protobuf_LIBRARY_RELEASE:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libprotobuf.so
-
-//Path to a library.
-Protobuf_LITE_LIBRARY_DEBUG:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libprotobuf-lite.so
-
-//Path to a library.
-Protobuf_LITE_LIBRARY_RELEASE:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libprotobuf-lite.so
-
-//The Google Protocol Buffers Compiler
-Protobuf_PROTOC_EXECUTABLE:FILEPATH=/home/linuxbrew/.linuxbrew/bin/protoc
-
-//Path to a library.
-Protobuf_PROTOC_LIBRARY_DEBUG:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libprotoc.so
-
-//Path to a library.
-Protobuf_PROTOC_LIBRARY_RELEASE:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libprotoc.so
+//The directory containing a CMake configuration file for Protobuf.
+Protobuf_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/protobuf
 
 //The directory containing a CMake configuration file for SCIP.
-SCIP_DIR:PATH=/home/linuxbrew/.linuxbrew/lib/cmake/scip
+SCIP_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/scip
 
 //Path to a file.
-ZLIB_INCLUDE_DIR:PATH=/home/linuxbrew/.linuxbrew/include
+ZLIB_INCLUDE_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/include
 
 //Path to a library.
 ZLIB_LIBRARY_DEBUG:FILEPATH=ZLIB_LIBRARY_DEBUG-NOTFOUND
 
 //Path to a library.
-ZLIB_LIBRARY_RELEASE:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libz.so
+ZLIB_LIBRARY_RELEASE:FILEPATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libz.so
 
 //The directory containing a CMake configuration file for absl.
-absl_DIR:PATH=/home/linuxbrew/.linuxbrew/lib/cmake/absl
-
-//The directory containing a CMake configuration file for highs.
-highs_DIR:PATH=/home/linuxbrew/.linuxbrew/lib/cmake/highs
+absl_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/absl
 
 //Value Computed by CMake
 main_BINARY_DIR:STATIC=/home/hsmorin/Documents/RCC/cpp/main/build
@@ -335,147 +290,25 @@ main_IS_TOP_LEVEL:STATIC=ON
 main_SOURCE_DIR:STATIC=/home/hsmorin/Documents/RCC/cpp/main
 
 //The directory containing a CMake configuration file for ortools.
-ortools_DIR:PATH=/home/linuxbrew/.linuxbrew/lib/cmake/ortools
+ortools_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/ortools
 
-//Path to a library.
-pkgcfg_lib_Cbc_Cbc:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib/libCbc.so
+//CMake built-in FindProtobuf.cmake module compatible
+protobuf_MODULE_COMPATIBLE:BOOL=OFF
 
-//Path to a library.
-pkgcfg_lib_Cbc_CbcSolver:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib/libCbcSolver.so
-
-//Path to a library.
-pkgcfg_lib_Cbc_Cgl:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/lib/libCgl.so
-
-//Path to a library.
-pkgcfg_lib_Cbc_Clp:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib/libClp.so
-
-//Path to a library.
-pkgcfg_lib_Cbc_ClpSolver:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib/libClpSolver.so
-
-//Path to a library.
-pkgcfg_lib_Cbc_CoinUtils:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib/libCoinUtils.so
-
-//Path to a library.
-pkgcfg_lib_Cbc_Osi:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib/libOsi.so
-
-//Path to a library.
-pkgcfg_lib_Cbc_OsiClp:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib/libOsiClp.so
-
-//Path to a library.
-pkgcfg_lib_Cbc_m:FILEPATH=/usr/lib/libm.so
-
-//Path to a library.
-pkgcfg_lib_Cbc_openblas:FILEPATH=/home/linuxbrew/.linuxbrew/opt/openblas/lib/libopenblas.so
-
-//Path to a library.
-pkgcfg_lib_Cbc_pthread:FILEPATH=/usr/lib/libpthread.a
-
-//Path to a library.
-pkgcfg_lib_Cbc_rt:FILEPATH=/usr/lib/librt.a
-
-//Path to a library.
-pkgcfg_lib_Cbc_z:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libz.so
-
-//Path to a library.
-pkgcfg_lib_Clp_Clp:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib/libClp.so
-
-//Path to a library.
-pkgcfg_lib_Clp_ClpSolver:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib/libClpSolver.so
-
-//Path to a library.
-pkgcfg_lib_Clp_CoinUtils:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib/libCoinUtils.so
-
-//Path to a library.
-pkgcfg_lib_Clp_m:FILEPATH=/usr/lib/libm.so
-
-//Path to a library.
-pkgcfg_lib_Clp_openblas:FILEPATH=/home/linuxbrew/.linuxbrew/opt/openblas/lib/libopenblas.so
-
-//Path to a library.
-pkgcfg_lib_Clp_z:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libz.so
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_Cbc:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib/libCbc.so
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_CbcSolver:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib/libCbcSolver.so
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_Cgl:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/lib/libCgl.so
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_Clp:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib/libClp.so
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_ClpSolver:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib/libClpSolver.so
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_CoinUtils:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib/libCoinUtils.so
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_Osi:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib/libOsi.so
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_OsiCbc:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib/libOsiCbc.so
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_OsiClp:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib/libOsiClp.so
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_m:FILEPATH=/usr/lib/libm.so
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_openblas:FILEPATH=/home/linuxbrew/.linuxbrew/opt/openblas/lib/libopenblas.so
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_pthread:FILEPATH=/usr/lib/libpthread.a
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_rt:FILEPATH=/usr/lib/librt.a
-
-//Path to a library.
-pkgcfg_lib_OsiCbc_z:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libz.so
-
-//Path to a library.
-pkgcfg_lib_OsiClp_Clp:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib/libClp.so
-
-//Path to a library.
-pkgcfg_lib_OsiClp_ClpSolver:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib/libClpSolver.so
-
-//Path to a library.
-pkgcfg_lib_OsiClp_CoinUtils:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib/libCoinUtils.so
-
-//Path to a library.
-pkgcfg_lib_OsiClp_Osi:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib/libOsi.so
-
-//Path to a library.
-pkgcfg_lib_OsiClp_OsiClp:FILEPATH=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib/libOsiClp.so
-
-//Path to a library.
-pkgcfg_lib_OsiClp_m:FILEPATH=/usr/lib/libm.so
-
-//Path to a library.
-pkgcfg_lib_OsiClp_openblas:FILEPATH=/home/linuxbrew/.linuxbrew/opt/openblas/lib/libopenblas.so
-
-//Path to a library.
-pkgcfg_lib_OsiClp_z:FILEPATH=/home/linuxbrew/.linuxbrew/lib/libz.so
+//Enable for verbose output
+protobuf_VERBOSE:BOOL=OFF
 
 //The directory containing a CMake configuration file for re2.
-re2_DIR:PATH=/home/linuxbrew/.linuxbrew/lib/cmake/re2
+re2_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/re2
+
+//The directory containing a CMake configuration file for utf8_range.
+utf8_range_DIR:PATH=/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/utf8_range
 
 
 ########################
 # INTERNAL cache entries
 ########################
 
-//ADVANCED property for variable: BZIP2_INCLUDE_DIR
-BZIP2_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BZIP2_LIBRARY_DEBUG
-BZIP2_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: BZIP2_LIBRARY_RELEASE
-BZIP2_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
-//Have symbol BZ2_bzCompressInit
-BZIP2_NEED_PREFIX:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -627,277 +460,30 @@ CMAKE_TAPI-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-Cbc_CFLAGS:INTERNAL=-I/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/include/cbc/coin;-I/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/include/cgl/coin;-I/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;-I/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/include/osi/coin;-I/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-Cbc_CFLAGS_I:INTERNAL=
-Cbc_CFLAGS_OTHER:INTERNAL=
-Cbc_FOUND:INTERNAL=1
-Cbc_INCLUDEDIR:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/include/cbc/coin
-Cbc_INCLUDE_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/include/cbc/coin;/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/include/cgl/coin;/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/include/osi/coin;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-Cbc_LDFLAGS:INTERNAL=-L/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib;-lCbcSolver;-lCbc;-lpthread;-lrt;-L/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/lib;-lCgl;-L/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;-lOsiClp;-lClpSolver;-lClp;-L/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib;-lOsi;-L/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;-lCoinUtils;-lz;-L/home/linuxbrew/.linuxbrew/opt/openblas/lib;-lopenblas;-lm
-Cbc_LDFLAGS_OTHER:INTERNAL=
-Cbc_LIBDIR:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib
-Cbc_LIBRARIES:INTERNAL=CbcSolver;Cbc;pthread;rt;Cgl;OsiClp;ClpSolver;Clp;Osi;CoinUtils;z;openblas;m
-Cbc_LIBRARY_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib;/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/lib;/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;/home/linuxbrew/.linuxbrew/opt/openblas/lib
-Cbc_LIBS:INTERNAL=
-Cbc_LIBS_L:INTERNAL=
-Cbc_LIBS_OTHER:INTERNAL=
-Cbc_LIBS_PATHS:INTERNAL=
-Cbc_MODULE_NAME:INTERNAL=cbc
-Cbc_PREFIX:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13
-Cbc_STATIC_CFLAGS:INTERNAL=-I/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/include/cbc/coin;-I/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/include/cgl/coin;-I/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;-I/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/include/osi/coin;-I/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-Cbc_STATIC_CFLAGS_I:INTERNAL=
-Cbc_STATIC_CFLAGS_OTHER:INTERNAL=
-Cbc_STATIC_INCLUDE_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/include/cbc/coin;/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/include/cgl/coin;/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/include/osi/coin;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-Cbc_STATIC_LDFLAGS:INTERNAL=-L/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib;-lCbcSolver;-lCbc;-lpthread;-lrt;-L/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/lib;-lCgl;-L/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;-lOsiClp;-lClpSolver;-lClp;-L/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib;-lOsi;-L/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;-lCoinUtils;-lz;-L/home/linuxbrew/.linuxbrew/opt/openblas/lib;-lopenblas;-lm
-Cbc_STATIC_LDFLAGS_OTHER:INTERNAL=
-Cbc_STATIC_LIBDIR:INTERNAL=
-Cbc_STATIC_LIBRARIES:INTERNAL=CbcSolver;Cbc;pthread;rt;Cgl;OsiClp;ClpSolver;Clp;Osi;CoinUtils;z;openblas;m
-Cbc_STATIC_LIBRARY_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib;/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/lib;/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;/home/linuxbrew/.linuxbrew/opt/openblas/lib
-Cbc_STATIC_LIBS:INTERNAL=
-Cbc_STATIC_LIBS_L:INTERNAL=
-Cbc_STATIC_LIBS_OTHER:INTERNAL=
-Cbc_STATIC_LIBS_PATHS:INTERNAL=
-Cbc_VERSION:INTERNAL=2.10.13
-Cbc_cbc_INCLUDEDIR:INTERNAL=
-Cbc_cbc_LIBDIR:INTERNAL=
-Cbc_cbc_PREFIX:INTERNAL=
-Cbc_cbc_VERSION:INTERNAL=
-Clp_CFLAGS:INTERNAL=-I/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;-I/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-Clp_CFLAGS_I:INTERNAL=
-Clp_CFLAGS_OTHER:INTERNAL=
-Clp_FOUND:INTERNAL=1
-Clp_INCLUDEDIR:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin
-Clp_INCLUDE_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-Clp_LDFLAGS:INTERNAL=-L/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;-lClpSolver;-lClp;-L/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;-lCoinUtils;-lz;-L/home/linuxbrew/.linuxbrew/opt/openblas/lib;-lopenblas;-lm
-Clp_LDFLAGS_OTHER:INTERNAL=
-Clp_LIBDIR:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib
-Clp_LIBRARIES:INTERNAL=ClpSolver;Clp;CoinUtils;z;openblas;m
-Clp_LIBRARY_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;/home/linuxbrew/.linuxbrew/opt/openblas/lib
-Clp_LIBS:INTERNAL=
-Clp_LIBS_L:INTERNAL=
-Clp_LIBS_OTHER:INTERNAL=
-Clp_LIBS_PATHS:INTERNAL=
-Clp_MODULE_NAME:INTERNAL=clp
-Clp_PREFIX:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11
-Clp_STATIC_CFLAGS:INTERNAL=-I/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;-I/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-Clp_STATIC_CFLAGS_I:INTERNAL=
-Clp_STATIC_CFLAGS_OTHER:INTERNAL=
-Clp_STATIC_INCLUDE_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-Clp_STATIC_LDFLAGS:INTERNAL=-L/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;-lClpSolver;-lClp;-L/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;-lCoinUtils;-lz;-L/home/linuxbrew/.linuxbrew/opt/openblas/lib;-lopenblas;-lm
-Clp_STATIC_LDFLAGS_OTHER:INTERNAL=
-Clp_STATIC_LIBDIR:INTERNAL=
-Clp_STATIC_LIBRARIES:INTERNAL=ClpSolver;Clp;CoinUtils;z;openblas;m
-Clp_STATIC_LIBRARY_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;/home/linuxbrew/.linuxbrew/opt/openblas/lib
-Clp_STATIC_LIBS:INTERNAL=
-Clp_STATIC_LIBS_L:INTERNAL=
-Clp_STATIC_LIBS_OTHER:INTERNAL=
-Clp_STATIC_LIBS_PATHS:INTERNAL=
-Clp_VERSION:INTERNAL=1.17.11
-Clp_clp_INCLUDEDIR:INTERNAL=
-Clp_clp_LIBDIR:INTERNAL=
-Clp_clp_PREFIX:INTERNAL=
-Clp_clp_VERSION:INTERNAL=
-//Details about finding BZip2
-FIND_PACKAGE_MESSAGE_DETAILS_BZip2:INTERNAL=[/home/linuxbrew/.linuxbrew/lib/libbz2.so][/home/linuxbrew/.linuxbrew/include][v1.0.8()]
+//Details about finding Cbc
+FIND_PACKAGE_MESSAGE_DETAILS_Cbc:INTERNAL=[/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/Cbc/CbcConfig.cmake][v2.10.12()]
+//Details about finding Clp
+FIND_PACKAGE_MESSAGE_DETAILS_Clp:INTERNAL=[/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/Clp/ClpConfig.cmake][v1.17.10()]
 //Details about finding Eigen3
-FIND_PACKAGE_MESSAGE_DETAILS_Eigen3:INTERNAL=[/home/linuxbrew/.linuxbrew/share/eigen3/cmake/Eigen3Config.cmake][v5.0.1()]
-//Details about finding Protobuf
-FIND_PACKAGE_MESSAGE_DETAILS_Protobuf:INTERNAL=[/home/linuxbrew/.linuxbrew/lib/libprotobuf.so][/home/linuxbrew/.linuxbrew/include][v7.35.0()]
+FIND_PACKAGE_MESSAGE_DETAILS_Eigen3:INTERNAL=[/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/share/eigen3/cmake/Eigen3Config.cmake][v3.4.0()]
 //Details about finding SCIP
-FIND_PACKAGE_MESSAGE_DETAILS_SCIP:INTERNAL=[/home/linuxbrew/.linuxbrew/lib/cmake/scip/scip-config.cmake][v10.0.2()]
+FIND_PACKAGE_MESSAGE_DETAILS_SCIP:INTERNAL=[/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/scip/scip-config.cmake][v9.2.0()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding ZLIB
-FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[/home/linuxbrew/.linuxbrew/lib/libz.so][/home/linuxbrew/.linuxbrew/include][ ][v1.3.1()]
+FIND_PACKAGE_MESSAGE_DETAILS_ZLIB:INTERNAL=[/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libz.so][/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/include][ ][v1.3.1()]
 //Details about finding re2
-FIND_PACKAGE_MESSAGE_DETAILS_re2:INTERNAL=[/home/linuxbrew/.linuxbrew/lib/cmake/re2/re2Config.cmake][v11.0.0()]
+FIND_PACKAGE_MESSAGE_DETAILS_re2:INTERNAL=[/home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/cmake/re2/re2Config.cmake][v11.0.0()]
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
-OsiCbc_CFLAGS:INTERNAL=-I/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/include/cbc/coin;-I/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/include/cgl/coin;-I/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;-I/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/include/osi/coin;-I/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-OsiCbc_CFLAGS_I:INTERNAL=
-OsiCbc_CFLAGS_OTHER:INTERNAL=
-OsiCbc_FOUND:INTERNAL=1
-OsiCbc_INCLUDEDIR:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/include/cbc/coin
-OsiCbc_INCLUDE_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/include/cbc/coin;/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/include/cgl/coin;/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/include/osi/coin;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-OsiCbc_LDFLAGS:INTERNAL=-L/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib;-lOsiCbc;-lCbcSolver;-lCbc;-lpthread;-lrt;-L/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/lib;-lCgl;-L/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;-lOsiClp;-lClpSolver;-lClp;-L/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib;-lOsi;-L/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;-lCoinUtils;-lz;-L/home/linuxbrew/.linuxbrew/opt/openblas/lib;-lopenblas;-lm
-OsiCbc_LDFLAGS_OTHER:INTERNAL=
-OsiCbc_LIBDIR:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib
-OsiCbc_LIBRARIES:INTERNAL=OsiCbc;CbcSolver;Cbc;pthread;rt;Cgl;OsiClp;ClpSolver;Clp;Osi;CoinUtils;z;openblas;m
-OsiCbc_LIBRARY_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib;/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/lib;/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;/home/linuxbrew/.linuxbrew/opt/openblas/lib
-OsiCbc_LIBS:INTERNAL=
-OsiCbc_LIBS_L:INTERNAL=
-OsiCbc_LIBS_OTHER:INTERNAL=
-OsiCbc_LIBS_PATHS:INTERNAL=
-OsiCbc_MODULE_NAME:INTERNAL=osi-cbc
-OsiCbc_PREFIX:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13
-OsiCbc_STATIC_CFLAGS:INTERNAL=-I/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/include/cbc/coin;-I/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/include/cgl/coin;-I/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;-I/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/include/osi/coin;-I/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-OsiCbc_STATIC_CFLAGS_I:INTERNAL=
-OsiCbc_STATIC_CFLAGS_OTHER:INTERNAL=
-OsiCbc_STATIC_INCLUDE_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/include/cbc/coin;/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/include/cgl/coin;/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/include/osi/coin;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-OsiCbc_STATIC_LDFLAGS:INTERNAL=-L/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib;-lOsiCbc;-lCbcSolver;-lCbc;-lpthread;-lrt;-L/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/lib;-lCgl;-L/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;-lOsiClp;-lClpSolver;-lClp;-L/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib;-lOsi;-L/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;-lCoinUtils;-lz;-L/home/linuxbrew/.linuxbrew/opt/openblas/lib;-lopenblas;-lm
-OsiCbc_STATIC_LDFLAGS_OTHER:INTERNAL=
-OsiCbc_STATIC_LIBDIR:INTERNAL=
-OsiCbc_STATIC_LIBRARIES:INTERNAL=OsiCbc;CbcSolver;Cbc;pthread;rt;Cgl;OsiClp;ClpSolver;Clp;Osi;CoinUtils;z;openblas;m
-OsiCbc_STATIC_LIBRARY_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib;/home/linuxbrew/.linuxbrew/Cellar/cgl/0.60.10/lib;/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;/home/linuxbrew/.linuxbrew/opt/openblas/lib
-OsiCbc_STATIC_LIBS:INTERNAL=
-OsiCbc_STATIC_LIBS_L:INTERNAL=
-OsiCbc_STATIC_LIBS_OTHER:INTERNAL=
-OsiCbc_STATIC_LIBS_PATHS:INTERNAL=
-OsiCbc_VERSION:INTERNAL=2.10.13
-OsiCbc_osi-cbc_INCLUDEDIR:INTERNAL=
-OsiCbc_osi-cbc_LIBDIR:INTERNAL=
-OsiCbc_osi-cbc_PREFIX:INTERNAL=
-OsiCbc_osi-cbc_VERSION:INTERNAL=
-OsiClp_CFLAGS:INTERNAL=-I/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;-I/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/include/osi/coin;-I/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-OsiClp_CFLAGS_I:INTERNAL=
-OsiClp_CFLAGS_OTHER:INTERNAL=
-OsiClp_FOUND:INTERNAL=1
-OsiClp_INCLUDEDIR:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin
-OsiClp_INCLUDE_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/include/osi/coin;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-OsiClp_LDFLAGS:INTERNAL=-L/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;-lOsiClp;-lClpSolver;-lClp;-L/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib;-lOsi;-L/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;-lCoinUtils;-lz;-L/home/linuxbrew/.linuxbrew/opt/openblas/lib;-lopenblas;-lm
-OsiClp_LDFLAGS_OTHER:INTERNAL=
-OsiClp_LIBDIR:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib
-OsiClp_LIBRARIES:INTERNAL=OsiClp;ClpSolver;Clp;Osi;CoinUtils;z;openblas;m
-OsiClp_LIBRARY_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;/home/linuxbrew/.linuxbrew/opt/openblas/lib
-OsiClp_LIBS:INTERNAL=
-OsiClp_LIBS_L:INTERNAL=
-OsiClp_LIBS_OTHER:INTERNAL=
-OsiClp_LIBS_PATHS:INTERNAL=
-OsiClp_MODULE_NAME:INTERNAL=osi-clp
-OsiClp_PREFIX:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11
-OsiClp_STATIC_CFLAGS:INTERNAL=-I/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;-I/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/include/osi/coin;-I/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-OsiClp_STATIC_CFLAGS_I:INTERNAL=
-OsiClp_STATIC_CFLAGS_OTHER:INTERNAL=
-OsiClp_STATIC_INCLUDE_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/include/clp/coin;/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/include/osi/coin;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/include/coinutils/coin
-OsiClp_STATIC_LDFLAGS:INTERNAL=-L/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;-lOsiClp;-lClpSolver;-lClp;-L/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib;-lOsi;-L/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;-lCoinUtils;-lz;-L/home/linuxbrew/.linuxbrew/opt/openblas/lib;-lopenblas;-lm
-OsiClp_STATIC_LDFLAGS_OTHER:INTERNAL=
-OsiClp_STATIC_LIBDIR:INTERNAL=
-OsiClp_STATIC_LIBRARIES:INTERNAL=OsiClp;ClpSolver;Clp;Osi;CoinUtils;z;openblas;m
-OsiClp_STATIC_LIBRARY_DIRS:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/clp/1.17.11/lib;/home/linuxbrew/.linuxbrew/Cellar/osi/0.108.12/lib;/home/linuxbrew/.linuxbrew/Cellar/coinutils/2.11.13/lib;/home/linuxbrew/.linuxbrew/opt/openblas/lib
-OsiClp_STATIC_LIBS:INTERNAL=
-OsiClp_STATIC_LIBS_L:INTERNAL=
-OsiClp_STATIC_LIBS_OTHER:INTERNAL=
-OsiClp_STATIC_LIBS_PATHS:INTERNAL=
-OsiClp_VERSION:INTERNAL=1.17.11
-OsiClp_osi-clp_INCLUDEDIR:INTERNAL=
-OsiClp_osi-clp_LIBDIR:INTERNAL=
-OsiClp_osi-clp_PREFIX:INTERNAL=
-OsiClp_osi-clp_VERSION:INTERNAL=
-//ADVANCED property for variable: PKG_CONFIG_ARGN
-PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
-PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Protobuf_INCLUDE_DIR
-Protobuf_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Protobuf_LIBRARY_DEBUG
-Protobuf_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Protobuf_LIBRARY_RELEASE
-Protobuf_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Protobuf_LITE_LIBRARY_DEBUG
-Protobuf_LITE_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Protobuf_LITE_LIBRARY_RELEASE
-Protobuf_LITE_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Protobuf_PROTOC_EXECUTABLE
-Protobuf_PROTOC_EXECUTABLE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Protobuf_PROTOC_LIBRARY_DEBUG
-Protobuf_PROTOC_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: Protobuf_PROTOC_LIBRARY_RELEASE
-Protobuf_PROTOC_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ZLIB_INCLUDE_DIR
 ZLIB_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ZLIB_LIBRARY_DEBUG
 ZLIB_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ZLIB_LIBRARY_RELEASE
 ZLIB_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
-__pkg_config_arguments_Cbc:INTERNAL=QUIET;cbc;IMPORTED_TARGET;GLOBAL
-__pkg_config_arguments_Clp:INTERNAL=QUIET;clp;IMPORTED_TARGET;GLOBAL
-__pkg_config_arguments_OsiCbc:INTERNAL=QUIET;osi-cbc;IMPORTED_TARGET;GLOBAL
-__pkg_config_arguments_OsiClp:INTERNAL=QUIET;osi-clp;IMPORTED_TARGET;GLOBAL
-__pkg_config_checked_Cbc:INTERNAL=1
-__pkg_config_checked_Clp:INTERNAL=1
-__pkg_config_checked_OsiCbc:INTERNAL=1
-__pkg_config_checked_OsiClp:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_Cbc
-pkgcfg_lib_Cbc_Cbc-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_CbcSolver
-pkgcfg_lib_Cbc_CbcSolver-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_Cgl
-pkgcfg_lib_Cbc_Cgl-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_Clp
-pkgcfg_lib_Cbc_Clp-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_ClpSolver
-pkgcfg_lib_Cbc_ClpSolver-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_CoinUtils
-pkgcfg_lib_Cbc_CoinUtils-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_Osi
-pkgcfg_lib_Cbc_Osi-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_OsiClp
-pkgcfg_lib_Cbc_OsiClp-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_m
-pkgcfg_lib_Cbc_m-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_openblas
-pkgcfg_lib_Cbc_openblas-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_pthread
-pkgcfg_lib_Cbc_pthread-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_rt
-pkgcfg_lib_Cbc_rt-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Cbc_z
-pkgcfg_lib_Cbc_z-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Clp_Clp
-pkgcfg_lib_Clp_Clp-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Clp_ClpSolver
-pkgcfg_lib_Clp_ClpSolver-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Clp_CoinUtils
-pkgcfg_lib_Clp_CoinUtils-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Clp_m
-pkgcfg_lib_Clp_m-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Clp_openblas
-pkgcfg_lib_Clp_openblas-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_Clp_z
-pkgcfg_lib_Clp_z-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_Cbc
-pkgcfg_lib_OsiCbc_Cbc-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_CbcSolver
-pkgcfg_lib_OsiCbc_CbcSolver-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_Cgl
-pkgcfg_lib_OsiCbc_Cgl-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_Clp
-pkgcfg_lib_OsiCbc_Clp-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_ClpSolver
-pkgcfg_lib_OsiCbc_ClpSolver-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_CoinUtils
-pkgcfg_lib_OsiCbc_CoinUtils-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_Osi
-pkgcfg_lib_OsiCbc_Osi-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_OsiCbc
-pkgcfg_lib_OsiCbc_OsiCbc-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_OsiClp
-pkgcfg_lib_OsiCbc_OsiClp-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_m
-pkgcfg_lib_OsiCbc_m-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_openblas
-pkgcfg_lib_OsiCbc_openblas-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_pthread
-pkgcfg_lib_OsiCbc_pthread-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_rt
-pkgcfg_lib_OsiCbc_rt-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiCbc_z
-pkgcfg_lib_OsiCbc_z-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiClp_Clp
-pkgcfg_lib_OsiClp_Clp-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiClp_ClpSolver
-pkgcfg_lib_OsiClp_ClpSolver-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiClp_CoinUtils
-pkgcfg_lib_OsiClp_CoinUtils-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiClp_Osi
-pkgcfg_lib_OsiClp_Osi-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiClp_OsiClp
-pkgcfg_lib_OsiClp_OsiClp-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiClp_m
-pkgcfg_lib_OsiClp_m-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiClp_openblas
-pkgcfg_lib_OsiClp_openblas-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OsiClp_z
-pkgcfg_lib_OsiClp_z-ADVANCED:INTERNAL=1
-prefix_result:INTERNAL=/home/linuxbrew/.linuxbrew/Cellar/cbc/2.10.13/lib
+//ADVANCED property for variable: protobuf_MODULE_COMPATIBLE
+protobuf_MODULE_COMPATIBLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: protobuf_VERBOSE
+protobuf_VERBOSE-ADVANCED:INTERNAL=1
 

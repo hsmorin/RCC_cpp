@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hsmorin/Documents/RCC/cpp/main
+CMAKE_SOURCE_DIR = /home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hsmorin/Documents/RCC/cpp/main/build
+CMAKE_BINARY_DIR = /home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,10 +87,17 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hsmorin/Documents/RCC/cpp/main/build/CMakeFiles /home/hsmorin/Documents/RCC/cpp/main/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/CMakeFiles /home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/hsmorin/Documents/RCC/cpp/main/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/CMakeFiles 0
 .PHONY : all
+
+# The main codegen target
+codegen: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/CMakeFiles /home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild//CMakeFiles/progress.marks
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 codegen
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/CMakeFiles 0
+.PHONY : codegen
 
 # The main clean target
 clean:
@@ -117,41 +124,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named treehh-populate
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+treehh-populate: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 treehh-populate
+.PHONY : treehh-populate
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
-
-src/findIndicatorMats.o: src/findIndicatorMats.cpp.o
-.PHONY : src/findIndicatorMats.o
-
-# target to build an object file
-src/findIndicatorMats.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/findIndicatorMats.cpp.o
-.PHONY : src/findIndicatorMats.cpp.o
-
-src/findIndicatorMats.i: src/findIndicatorMats.cpp.i
-.PHONY : src/findIndicatorMats.i
-
-# target to preprocess a source file
-src/findIndicatorMats.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/findIndicatorMats.cpp.i
-.PHONY : src/findIndicatorMats.cpp.i
-
-src/findIndicatorMats.s: src/findIndicatorMats.cpp.s
-.PHONY : src/findIndicatorMats.s
-
-# target to generate assembly for a file
-src/findIndicatorMats.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/findIndicatorMats.cpp.s
-.PHONY : src/findIndicatorMats.cpp.s
+treehh-populate/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/treehh-populate.dir/build.make CMakeFiles/treehh-populate.dir/build
+.PHONY : treehh-populate/fast
 
 # Help Target
 help:
@@ -159,12 +142,10 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... codegen"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... main"
-	@echo "... src/findIndicatorMats.o"
-	@echo "... src/findIndicatorMats.i"
-	@echo "... src/findIndicatorMats.s"
+	@echo "... treehh-populate"
 .PHONY : help
 
 

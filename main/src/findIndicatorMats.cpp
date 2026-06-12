@@ -387,7 +387,7 @@ vector<int> counterElements(const map<int, int> &ctr) {
 int dotProduct(const vector<vector<int>> &mat, int row,
                const vector<int> &vec) {
   int sum = 0;
-  for (int j = 0; j < vec.size(); j++)
+  for (int j = 0; j < (int)vec.size(); j++)
     sum += mat[row][j] * vec[j];
   return sum;
 }
@@ -407,7 +407,7 @@ vector<vector<int>> deleteCols(const vector<vector<int>> &mat,
   vector<vector<int>> result;
   for (const auto &row : mat) {
     vector<int> newRow;
-    for (int j = 0; j < row.size(); j++) {
+    for (int j = 0; j < (int)row.size(); j++) {
       if (find(colInds.begin(), colInds.end(), j) == colInds.end())
         newRow.push_back(row[j]);
     }
@@ -492,7 +492,7 @@ generator<vector<int>> validBiPerms(const vector<int> &goalDots,
     for (auto subPerm : validBiPerms(newGoalDots, newPrevBiMat, bCtr)) {
       vector<int> fullPerm = subPerm;
       // Insert left to right to restore original order
-      for (int i = 0; i < colInds.size(); i++)
+      for (int i = 0; i < (int)colInds.size(); i++)
         fullPerm.insert(fullPerm.begin() + colInds[i], biToAssign);
       co_yield fullPerm;
     }
@@ -694,7 +694,7 @@ int mainALL() {
     for (const auto &leafIt : leaves) {
       vector<array<int, M>> subMat = reconstructMatrix(matTree, leafIt);
 
-      if (subMat.size() != rowInd + 1) {
+      if ((int)subMat.size() != rowInd + 1) {
         matTree.erase(leafIt);
         continue;
       }
@@ -798,7 +798,7 @@ int main(int argc, char *argv[]) {
           vector<array<int, M>> subMat =
               reconstructMatrix(matTree, leaves[idx]);
 
-          if (subMat.size() != rowInd + 1) {
+          if ((int)subMat.size() != rowInd + 1) {
             return make_pair(idx, vector<array<int, M>>{});
           }
           return make_pair(idx, operations_research::sat::solveNextRow(

@@ -3,11 +3,11 @@
 
 cmake_minimum_required(VERSION ${CMAKE_VERSION}) # this file comes with cmake
 
-if(EXISTS "/home/hsmorin/Documents/RCC/cpp/main/build/CMakeFiles/fc-stamp/treehh/treehh-gitclone-lastrun.txt" AND EXISTS "/home/hsmorin/Documents/RCC/cpp/main/build/CMakeFiles/fc-stamp/treehh/treehh-gitinfo.txt" AND
-  "/home/hsmorin/Documents/RCC/cpp/main/build/CMakeFiles/fc-stamp/treehh/treehh-gitclone-lastrun.txt" IS_NEWER_THAN "/home/hsmorin/Documents/RCC/cpp/main/build/CMakeFiles/fc-stamp/treehh/treehh-gitinfo.txt")
+if(EXISTS "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-gitclone-lastrun.txt" AND EXISTS "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-gitinfo.txt" AND
+  "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-gitclone-lastrun.txt" IS_NEWER_THAN "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-gitinfo.txt")
   message(VERBOSE
     "Avoiding repeated git clone, stamp file is up to date: "
-    "'/home/hsmorin/Documents/RCC/cpp/main/build/CMakeFiles/fc-stamp/treehh/treehh-gitclone-lastrun.txt'"
+    "'/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-gitclone-lastrun.txt'"
   )
   return()
 endif()
@@ -78,10 +78,10 @@ endif()
 # Complete success, update the script-last-run stamp file:
 #
 execute_process(
-  COMMAND ${CMAKE_COMMAND} -E copy "/home/hsmorin/Documents/RCC/cpp/main/build/CMakeFiles/fc-stamp/treehh/treehh-gitinfo.txt" "/home/hsmorin/Documents/RCC/cpp/main/build/CMakeFiles/fc-stamp/treehh/treehh-gitclone-lastrun.txt"
+  COMMAND ${CMAKE_COMMAND} -E copy "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-gitinfo.txt" "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-gitclone-lastrun.txt"
   RESULT_VARIABLE error_code
   ${maybe_show_command}
 )
 if(error_code)
-  message(FATAL_ERROR "Failed to copy script-last-run stamp file: '/home/hsmorin/Documents/RCC/cpp/main/build/CMakeFiles/fc-stamp/treehh/treehh-gitclone-lastrun.txt'")
+  message(FATAL_ERROR "Failed to copy script-last-run stamp file: '/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-gitclone-lastrun.txt'")
 endif()
