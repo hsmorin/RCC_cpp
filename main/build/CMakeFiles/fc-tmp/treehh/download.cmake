@@ -4,6 +4,6 @@ message(VERBOSE "Executing download step for treehh")
 
 block(SCOPE_FOR VARIABLES)
 
-include("/home/hsmorin/Documents/RCC/julia_implement/main/build/CMakeFiles/fc-tmp/treehh/treehh-gitclone.cmake")
+include("/home/hsmorin/Documents/RCC/cpp/main/build/CMakeFiles/fc-tmp/treehh/treehh-gitclone.cmake")
 
 endblock()

@@ -12,13 +12,16 @@
 #include <algorithm>
 #include <bits/stdc++.h>
 #include <cmath>
+#include <future>
 #include <generator>
 #include <iostream>
 #include <memory>
+#include <mutex>
 #include <numeric>
 #include <sstream>
 #include <stdint.h>
 #include <string>
+#include <thread>
 #include <vector>
 using namespace std;
 
@@ -29,6 +32,22 @@ before using them!!!*/
 // Before use update the problem data choose which main function to use
 
 // Problem Data (update this)
+/* Quintic
+constexpr int N = 10;
+constexpr int M = 11;
+
+const vector<array<int, M>> intMat = {
+    {-3, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1}, {0, -2, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 1, -2, 1, 0, 0, 0, 0, 0, 0, 0}, {0, 0, 1, -2, 1, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 1, -2, 1, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 1, -3, 0, 1, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, -2, 1, 0, 0, 0}, {1, 0, 0, 0, 0, 1, 1, -1, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0, -3, 0, 1}, {0, 0, 0, 0, 0, 0, 0, 0, 0, -2, 1},
+    {1, 0, 0, 0, 0, 0, 0, 0, 1, 1, -1},
+};
+
+const array<int, M> aMaxes = {11, 36, 18, 12, 9, 6, 12, 6, 35, 4, 4};
+const array<int, M> genera = {0};*/
+// Degree 10
 constexpr int N = 22; // N as in n - 1
 constexpr int M = 23; // n (number of rows of the intersection matrix)
 const vector<array<int, M>> intMat = {
@@ -602,7 +621,7 @@ vector<array<int, M>> solveNextRow(const vector<array<int, M>> &subMat,
 
 // Main function using trees
 // Computes everthing at once
-int mainLr() {
+int mainALL() {
 
   int rowInd = 0;
 
@@ -749,7 +768,6 @@ int main(int argc, char *argv[]) {
 
   auto matTree = loadTree(inputFileName);
 
-  int count = 0;
   vector<tree<array<int, M>>::iterator> leaves;
   for (auto it = matTree.begin_leaf(); it != matTree.end_leaf(); it++) {
     leaves.push_back(it);
@@ -766,24 +784,58 @@ int main(int argc, char *argv[]) {
   int rowInd = firstMat.size() - 1;
   vector<vector<int>> intMatSlice =
       sliceMat(intMatReOrd, rowInd + 1, rowInd + 2, 0, rowInd + 2);
+  int selfInt = intMatReOrd[rowInd + 1][rowInd + 1];
+  int genus = generaReOrd[rowInd + 1];
+  int aMax = aMaxesReOrd[rowInd + 1];
 
-  for (const auto &leafIt : leaves) {
-    vector<array<int, M>> subMat = reconstructMatrix(matTree, leafIt);
+  // Compute nextRows for each leaf in parallel
+  int numThreads = thread::hardware_concurrency();
+  vector<future<pair<int, vector<array<int, M>>>>> futures;
 
-    if (subMat.size() != rowInd + 1) {
-      matTree.erase(leafIt);
-      continue;
+  for (int idx = 0; idx < (int)leaves.size(); idx++) {
+    futures.push_back(
+        async(launch::async, [&, idx]() -> pair<int, vector<array<int, M>>> {
+          vector<array<int, M>> subMat =
+              reconstructMatrix(matTree, leaves[idx]);
+
+          if (subMat.size() != rowInd + 1) {
+            return make_pair(idx, vector<array<int, M>>{});
+          }
+          return make_pair(idx, operations_research::sat::solveNextRow(
+                                    subMat, intMatSlice, selfInt, genus, aMax));
+        }));
+
+    if ((int)futures.size() >= numThreads) {
+      for (auto &f : futures)
+        f.wait();
+      futures.clear();
     }
+  }
 
-    vector<array<int, M>> nextRows = operations_research::sat::solveNextRow(
-        subMat, intMatSlice, intMatReOrd[rowInd + 1][rowInd + 1],
-        generaReOrd[rowInd + 1], aMaxesReOrd[rowInd + 1]);
+  for (auto &f : futures)
+    f.wait();
 
+  int count = 0;
+  vector<future<pair<int, vector<array<int, M>>>>> results;
+  for (int idx = 0; idx < (int)leaves.size(); idx++) {
+    results.push_back(
+        async(launch::async, [&, idx]() -> pair<int, vector<array<int, M>>> {
+          vector<array<int, M>> subMat =
+              reconstructMatrix(matTree, leaves[idx]);
+          if (subMat.size() != (size_t)(rowInd + 1))
+            return make_pair(idx, vector<array<int, M>>{});
+          return make_pair(idx, operations_research::sat::solveNextRow(
+                                    subMat, intMatSlice, selfInt, genus, aMax));
+        }));
+  }
+
+  for (auto &f : results) {
+    auto [idx, nextRows] = f.get();
+    auto leafIt = leaves[idx];
     if (nextRows.empty()) {
       matTree.erase(leafIt);
       continue;
     }
-
     for (const auto &newRow : nextRows) {
       matTree.append_child(leafIt, newRow);
       count++;
@@ -791,6 +843,7 @@ int main(int argc, char *argv[]) {
   }
   rowInd++;
   cout << "Number of Leaves at Depth " << rowInd << ": " << count << "\n";
+  pruneShallowLeaves(matTree, rowInd);
   saveTree(matTree, outputFileName);
   return 0;
 }

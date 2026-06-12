@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DEIGEN_MPL2_ONLY -DHAVE_CONFIG_H -DOR_PROTO_DLL="" -DPROTOBUF_USE_DLLS -DUSE_BOP -DUSE_CBC -DUSE_CLP -DUSE_GLOP -DUSE_LP_PARSER -DUSE_MATH_OPT -DUSE_PDLP -DUSE_SCIP
 
-CXX_INCLUDES = -I/home/hsmorin/Documents/RCC/julia_implement/splitting/build/_deps/treehh-src/src -isystem /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/include -isystem /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/include/coin -isystem /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/include/eigen3
+CXX_INCLUDES = -I/home/hsmorin/Documents/RCC/cpp/splitting/build/_deps/treehh-src/src -isystem /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/include -isystem /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/include/coin -isystem /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/include/eigen3
 
 CXX_FLAGS = -std=gnu++23 -fPIE -fwrapv
 

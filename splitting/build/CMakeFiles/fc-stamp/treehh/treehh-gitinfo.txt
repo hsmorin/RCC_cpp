@@ -3,9 +3,9 @@
 # No other meaning or use of this file is supported.
 
 method=git
-command=/usr/bin/cmake;-DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE;-P;/home/hsmorin/Documents/RCC/julia_implement/splitting/build/CMakeFiles/fc-tmp/treehh/treehh-gitclone.cmake
-source_dir=/home/hsmorin/Documents/RCC/julia_implement/splitting/build/_deps/treehh-src
-work_dir=/home/hsmorin/Documents/RCC/julia_implement/splitting/build/_deps
+command=/usr/bin/cmake;-DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE;-P;/home/hsmorin/Documents/RCC/cpp/splitting/build/CMakeFiles/fc-tmp/treehh/treehh-gitclone.cmake
+source_dir=/home/hsmorin/Documents/RCC/cpp/splitting/build/_deps/treehh-src
+work_dir=/home/hsmorin/Documents/RCC/cpp/splitting/build/_deps
 repository=https://github.com/kpeeters/tree.hh.git
 remote=origin
 init_submodules=TRUE

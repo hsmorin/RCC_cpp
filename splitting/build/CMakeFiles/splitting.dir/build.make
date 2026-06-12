@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hsmorin/Documents/RCC/julia_implement/splitting
+CMAKE_SOURCE_DIR = /home/hsmorin/Documents/RCC/cpp/splitting
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hsmorin/Documents/RCC/julia_implement/splitting/build
+CMAKE_BINARY_DIR = /home/hsmorin/Documents/RCC/cpp/splitting/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/splitting.dir/depend.make
@@ -73,18 +73,18 @@ CMakeFiles/splitting.dir/codegen:
 .PHONY : CMakeFiles/splitting.dir/codegen
 
 CMakeFiles/splitting.dir/src/splitting.cpp.o: CMakeFiles/splitting.dir/flags.make
-CMakeFiles/splitting.dir/src/splitting.cpp.o: /home/hsmorin/Documents/RCC/julia_implement/splitting/src/splitting.cpp
+CMakeFiles/splitting.dir/src/splitting.cpp.o: /home/hsmorin/Documents/RCC/cpp/splitting/src/splitting.cpp
 CMakeFiles/splitting.dir/src/splitting.cpp.o: CMakeFiles/splitting.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hsmorin/Documents/RCC/julia_implement/splitting/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/splitting.dir/src/splitting.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/splitting.dir/src/splitting.cpp.o -MF CMakeFiles/splitting.dir/src/splitting.cpp.o.d -o CMakeFiles/splitting.dir/src/splitting.cpp.o -c /home/hsmorin/Documents/RCC/julia_implement/splitting/src/splitting.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hsmorin/Documents/RCC/cpp/splitting/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/splitting.dir/src/splitting.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/splitting.dir/src/splitting.cpp.o -MF CMakeFiles/splitting.dir/src/splitting.cpp.o.d -o CMakeFiles/splitting.dir/src/splitting.cpp.o -c /home/hsmorin/Documents/RCC/cpp/splitting/src/splitting.cpp
 
 CMakeFiles/splitting.dir/src/splitting.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/splitting.dir/src/splitting.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hsmorin/Documents/RCC/julia_implement/splitting/src/splitting.cpp > CMakeFiles/splitting.dir/src/splitting.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hsmorin/Documents/RCC/cpp/splitting/src/splitting.cpp > CMakeFiles/splitting.dir/src/splitting.cpp.i
 
 CMakeFiles/splitting.dir/src/splitting.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/splitting.dir/src/splitting.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hsmorin/Documents/RCC/julia_implement/splitting/src/splitting.cpp -o CMakeFiles/splitting.dir/src/splitting.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hsmorin/Documents/RCC/cpp/splitting/src/splitting.cpp -o CMakeFiles/splitting.dir/src/splitting.cpp.s
 
 # Object files for target splitting
 splitting_OBJECTS = \
@@ -96,106 +96,106 @@ splitting_EXTERNAL_OBJECTS =
 splitting: CMakeFiles/splitting.dir/src/splitting.cpp.o
 splitting: CMakeFiles/splitting.dir/build.make
 splitting: CMakeFiles/splitting.dir/compiler_depend.ts
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libortools.so.9.12.4544
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_parse.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_usage.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_usage_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_flags.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_bad_any_cast_impl.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libprotobuf.so.29.3.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_check_op.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_die_if_null.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_conditions.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_message.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_examine_stack.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_format.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_proto.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_nullguard.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_log_sink_set.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_sink.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_entry.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_initialize.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_globals.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_vlog_config_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_fnmatch.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_globals.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_seed_sequences.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_pool_urbg.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_randen.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_randen_hwaes.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_randen_hwaes_impl.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_randen_slow.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_platform.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_seed_material.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_seed_gen_exception.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_statusor.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_status.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_strerror.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_distributions.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_leak_check.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libre2.so.11.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_reflection.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_private_handle_accessor.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_commandlineflag.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_marshalling.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_config.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_program_name.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_commandlineflag_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_raw_hash_set.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_hashtablez_sampler.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_cord.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_cordz_info.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_cord_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_cordz_functions.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_exponential_biased.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_cordz_handle.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_synchronization.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_stacktrace.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_symbolize.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_debugging_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_demangle_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_demangle_rust.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_decode_rust_punycode.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_utf8_for_code_point.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_graphcycles_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_kernel_timeout_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_time.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_civil_time.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_time_zone.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_malloc_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_crc_cord_state.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_crc32c.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_str_format_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_crc_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_crc_cpu_detect.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_hash.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_bad_optional_access.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_city.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_bad_variant_access.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_low_level_hash.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_strings.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_int128.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_strings_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_string_view.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_base.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_spinlock_wait.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_throw_delegate.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_raw_logging_internal.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_severity.so.2407.0.0
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libCbcSolver.so.2.10.12
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libOsiCbc.so.2.10.12
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libCbc.so.2.10.12
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libCgl.so.0.60.9
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libClpSolver.so.1.17.10
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libOsiClp.so.1.17.10
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libClp.so.1.17.10
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libOsi.so.0.108.11
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libCoinUtils.so.2.11.12
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libz.so
-splitting: /home/hsmorin/Documents/RCC/julia_implement/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libscip.a
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libortools.so.9.12.4544
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_parse.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_usage.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_usage_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_flags.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_bad_any_cast_impl.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libprotobuf.so.29.3.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_check_op.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_die_if_null.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_conditions.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_message.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_examine_stack.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_format.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_proto.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_nullguard.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_log_sink_set.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_sink.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_entry.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_initialize.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_globals.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_vlog_config_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_fnmatch.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_internal_globals.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_seed_sequences.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_pool_urbg.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_randen.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_randen_hwaes.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_randen_hwaes_impl.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_randen_slow.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_platform.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_internal_seed_material.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_seed_gen_exception.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_statusor.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_status.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_strerror.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_random_distributions.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_leak_check.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libre2.so.11.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_reflection.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_private_handle_accessor.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_commandlineflag.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_marshalling.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_config.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_program_name.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_flags_commandlineflag_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_raw_hash_set.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_hashtablez_sampler.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_cord.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_cordz_info.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_cord_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_cordz_functions.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_exponential_biased.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_cordz_handle.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_synchronization.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_stacktrace.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_symbolize.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_debugging_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_demangle_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_demangle_rust.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_decode_rust_punycode.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_utf8_for_code_point.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_graphcycles_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_kernel_timeout_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_time.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_civil_time.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_time_zone.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_malloc_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_crc_cord_state.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_crc32c.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_str_format_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_crc_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_crc_cpu_detect.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_hash.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_bad_optional_access.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_city.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_bad_variant_access.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_low_level_hash.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_strings.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_int128.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_strings_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_string_view.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_base.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_spinlock_wait.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_throw_delegate.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_raw_logging_internal.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libabsl_log_severity.so.2407.0.0
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libCbcSolver.so.2.10.12
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libOsiCbc.so.2.10.12
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libCbc.so.2.10.12
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libCgl.so.0.60.9
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libClpSolver.so.1.17.10
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libOsiClp.so.1.17.10
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libClp.so.1.17.10
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libOsi.so.0.108.11
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libCoinUtils.so.2.11.12
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libz.so
+splitting: /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/lib/libscip.a
 splitting: CMakeFiles/splitting.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/hsmorin/Documents/RCC/julia_implement/splitting/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable splitting"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/hsmorin/Documents/RCC/cpp/splitting/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable splitting"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/splitting.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -207,6 +207,6 @@ CMakeFiles/splitting.dir/clean:
 .PHONY : CMakeFiles/splitting.dir/clean
 
 CMakeFiles/splitting.dir/depend:
-	cd /home/hsmorin/Documents/RCC/julia_implement/splitting/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hsmorin/Documents/RCC/julia_implement/splitting /home/hsmorin/Documents/RCC/julia_implement/splitting /home/hsmorin/Documents/RCC/julia_implement/splitting/build /home/hsmorin/Documents/RCC/julia_implement/splitting/build /home/hsmorin/Documents/RCC/julia_implement/splitting/build/CMakeFiles/splitting.dir/DependInfo.cmake "--color=$(COLOR)" splitting
+	cd /home/hsmorin/Documents/RCC/cpp/splitting/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hsmorin/Documents/RCC/cpp/splitting /home/hsmorin/Documents/RCC/cpp/splitting /home/hsmorin/Documents/RCC/cpp/splitting/build /home/hsmorin/Documents/RCC/cpp/splitting/build /home/hsmorin/Documents/RCC/cpp/splitting/build/CMakeFiles/splitting.dir/DependInfo.cmake "--color=$(COLOR)" splitting
 .PHONY : CMakeFiles/splitting.dir/depend
 

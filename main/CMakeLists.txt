@@ -14,8 +14,10 @@ set(CMAKE_PREFIX_PATH
     "/home/linuxbrew/.linuxbrew/opt/glpk"
 )
 
+find_package(Threads REQUIRED)
 find_package(ortools REQUIRED)
 add_executable(main src/findIndicatorMats.cpp)
+target_link_libraries(main ortools::ortools Threads::Threads)
 target_link_libraries(main ortools::ortools)
 
 include(FetchContent)

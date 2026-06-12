@@ -809,7 +809,7 @@ int mainTr() {
   return 0;
 }
 
-int main(int argc, char *argv[]) {
+int mainSP(int argc, char *argv[]) {
   if (argc != 4 && argc != 5) {
     cerr << "Usage: " << argv[0]
          << "filePrefix rowIndex newNumberOfSplits numberOfCurrentSplits\n"
@@ -861,48 +861,61 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-int mainTS(int argc, char *argv[]) {
-  if (argc != 4) {
+int main(int argc, char *argv[]) {
+  if (argc != 3 && argc != 4) {
+    cerr << "or: " << argv[0] << "fileName rowInd\n";
     cerr << "Usage: " << argv[0] << "filePrefix numJobs rowInd\n";
     return 1;
   }
 
-  string filePrefix = argv[1];
+  string filePrefix = argv[1]; // fileName in single file case
   int rowInd;
   int numJobs;
 
   stringstream convert2{argv[2]};
-  stringstream convert3{argv[3]};
 
-  if (!(convert2 >> numJobs)) {
-    cerr << "Error: " << argv[2] << " not an integer.";
-    return 1;
-  }
+  if (argc == 3) {
+    if (!(convert2 >> rowInd)) {
+      cerr << "Error: " << argv[2] << " not an integer.";
+      return 1;
+    }
 
-  if (!(convert3 >> rowInd)) {
-    cerr << "Error: " << argv[3] << " not an integer.";
-    return 1;
+    auto matTree = loadTree(filePrefix);
+    pruneShallowLeaves(matTree, rowInd);
+    int count = 0;
+    for (auto it = matTree.begin_leaf(); it != matTree.end_leaf(); ++it) {
+      count++;
+    }
+    cout << "Number of matrices in " << filePrefix << ": " << count << "\n";
+    return 0;
+  } else if (argc == 4) {
+
+    stringstream convert3{argv[3]};
+    if (!(convert3 >> rowInd)) {
+      cerr << "Error: " << argv[3] << " not an integer.";
+      return 1;
+    }
+    if (!(convert2 >> numJobs)) {
+      cerr << "Error: " << argv[2] << " not an integer.";
+      return 1;
+    }
   }
 
   int count = 0;
-  auto matTree = loadTree("cpp6.tr");
-  vector<tree<array<int, M>>::iterator> leaves;
-  for (auto it = matTree.begin_leaf(); it != matTree.end_leaf(); ++it) {
-    leaves.push_back(it);
-  }
 
   for (int jobInd = 0; jobInd < numJobs; jobInd++) {
     string fileName =
         filePrefix + to_string(jobInd) + "_" + to_string(rowInd) + ".tr";
     auto subMatTree = loadTree(fileName);
+    pruneShallowLeaves(subMatTree, rowInd);
     for (auto it = subMatTree.begin_leaf(); it != subMatTree.end_leaf(); ++it) {
-      auto subMat1 = reconstructMatrix(matTree, leaves[count]);
-      auto subMat2 = reconstructMatrix(subMatTree, it);
-      if (subMat1 == subMat2) {
-        cout << ":)\n" << flush;
-      } else {
-        cout << ":(" << flush;
-        abort();
+      auto mat = reconstructMatrix(subMatTree, it);
+      for (auto row : mat) {
+        array<int, M> zero = {0};
+        displayArray(zero);
+        if (row == zero) {
+          cout << "zero found!" << flush;
+        }
       }
       count++;
     }

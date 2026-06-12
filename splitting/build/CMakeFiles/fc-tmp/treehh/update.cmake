@@ -4,6 +4,6 @@ message(VERBOSE "Executing update step for treehh")
 
 block(SCOPE_FOR VARIABLES)
 
-include("/home/hsmorin/Documents/RCC/julia_implement/splitting/build/CMakeFiles/fc-tmp/treehh/treehh-gitupdate.cmake")
+include("/home/hsmorin/Documents/RCC/cpp/splitting/build/CMakeFiles/fc-tmp/treehh/treehh-gitupdate.cmake")
 
 endblock()
