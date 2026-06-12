@@ -621,7 +621,7 @@ vector<array<int, M>> solveNextRow(const vector<array<int, M>> &subMat,
 
 // Main function using trees
 // Computes everthing at once
-int mainALL() {
+int mainAll() {
 
   int rowInd = 0;
 
@@ -789,7 +789,7 @@ int main(int argc, char *argv[]) {
   int aMax = aMaxesReOrd[rowInd + 1];
 
   // Compute nextRows for each leaf in parallel
-  int numThreads = thread::hardware_concurrency();
+  int numThreads = 8;
   vector<future<pair<int, vector<array<int, M>>>>> futures;
 
   for (int idx = 0; idx < (int)leaves.size(); idx++) {
