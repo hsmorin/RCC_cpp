@@ -560,6 +560,8 @@ vector<array<int, M>> solveNextRow(const vector<array<int, M>> &subMat,
   }
 
   SatParameters parameters;
+
+  parameters.set_num_search_workers(2);
   parameters.set_enumerate_all_solutions(true);
 
   vector<array<int, M>> sols = {};
@@ -789,7 +791,7 @@ int main(int argc, char *argv[]) {
   int aMax = aMaxesReOrd[rowInd + 1];
 
   // Compute nextRows for each leaf in parallel
-  int numThreads = 8;
+  int numThreads = 4;
   vector<future<pair<int, vector<array<int, M>>>>> futures;
 
   for (int idx = 0; idx < (int)leaves.size(); idx++) {
