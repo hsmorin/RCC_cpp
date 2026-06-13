@@ -561,7 +561,6 @@ vector<array<int, M>> solveNextRow(const vector<array<int, M>> &subMat,
 
   SatParameters parameters;
 
-  parameters.set_num_search_workers(2);
   parameters.set_enumerate_all_solutions(true);
 
   vector<array<int, M>> sols = {};
@@ -623,7 +622,7 @@ vector<array<int, M>> solveNextRow(const vector<array<int, M>> &subMat,
 
 // Main function using trees
 // Computes everthing at once
-int mainAll() {
+int mainALL() {
 
   int rowInd = 0;
 
@@ -791,48 +790,37 @@ int main(int argc, char *argv[]) {
   int aMax = aMaxesReOrd[rowInd + 1];
 
   // Compute nextRows for each leaf in parallel
-  int numThreads = 4;
-  vector<future<pair<int, vector<array<int, M>>>>> futures;
+  int count = 0;
+  int numThreads = thread::hardware_concurrency();
+  vector<pair<int, vector<array<int, M>>>> allResults(leaves.size());
 
-  for (int idx = 0; idx < (int)leaves.size(); idx++) {
-    futures.push_back(
-        async(launch::async, [&, idx]() -> pair<int, vector<array<int, M>>> {
-          vector<array<int, M>> subMat =
-              reconstructMatrix(matTree, leaves[idx]);
+  // Process in batches of numThreads
+  for (int start = 0; start < (int)leaves.size(); start += numThreads) {
+    int end = min(start + numThreads, (int)leaves.size());
+    vector<future<pair<int, vector<array<int, M>>>>> batch;
 
-          if ((int)subMat.size() != rowInd + 1) {
-            return make_pair(idx, vector<array<int, M>>{});
-          }
-          return make_pair(idx, operations_research::sat::solveNextRow(
-                                    subMat, intMatSlice, selfInt, genus, aMax));
-        }));
+    for (int idx = start; idx < end; idx++) {
+      batch.push_back(
+          async(launch::async, [&, idx]() -> pair<int, vector<array<int, M>>> {
+            vector<array<int, M>> subMat =
+                reconstructMatrix(matTree, leaves[idx]);
+            if (subMat.size() != (size_t)(rowInd + 1))
+              return make_pair(idx, vector<array<int, M>>{});
+            return make_pair(idx,
+                             operations_research::sat::solveNextRow(
+                                 subMat, intMatSlice, selfInt, genus, aMax));
+          }));
+    }
 
-    if ((int)futures.size() >= numThreads) {
-      for (auto &f : futures)
-        f.wait();
-      futures.clear();
+    // Wait for batch to complete before starting next
+    for (auto &f : batch) {
+      auto [idx, nextRows] = f.get();
+      allResults[idx] = make_pair(idx, nextRows);
     }
   }
 
-  for (auto &f : futures)
-    f.wait();
-
-  int count = 0;
-  vector<future<pair<int, vector<array<int, M>>>>> results;
-  for (int idx = 0; idx < (int)leaves.size(); idx++) {
-    results.push_back(
-        async(launch::async, [&, idx]() -> pair<int, vector<array<int, M>>> {
-          vector<array<int, M>> subMat =
-              reconstructMatrix(matTree, leaves[idx]);
-          if (subMat.size() != (size_t)(rowInd + 1))
-            return make_pair(idx, vector<array<int, M>>{});
-          return make_pair(idx, operations_research::sat::solveNextRow(
-                                    subMat, intMatSlice, selfInt, genus, aMax));
-        }));
-  }
-
-  for (auto &f : results) {
-    auto [idx, nextRows] = f.get();
+  // Write results to tree sequentially
+  for (auto &[idx, nextRows] : allResults) {
     auto leafIt = leaves[idx];
     if (nextRows.empty()) {
       matTree.erase(leafIt);
@@ -843,6 +831,7 @@ int main(int argc, char *argv[]) {
       count++;
     }
   }
+
   rowInd++;
   cout << "Number of Leaves at Depth " << rowInd << ": " << count << "\n";
   pruneShallowLeaves(matTree, rowInd);
