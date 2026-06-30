@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/CMakeFiles/treehh-populate"
+		},
+		{
+			"file" : "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/CMakeFiles/treehh-populate.rule"
+		},
+		{
+			"file" : "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/CMakeFiles/treehh-populate-complete.rule"
+		},
+		{
+			"file" : "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-build.rule"
+		},
+		{
+			"file" : "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-configure.rule"
+		},
+		{
+			"file" : "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-download.rule"
+		},
+		{
+			"file" : "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-install.rule"
+		},
+		{
+			"file" : "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-patch.rule"
+		},
+		{
+			"file" : "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-test.rule"
+		},
+		{
+			"file" : "/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-subbuild/treehh-populate-prefix/src/treehh-populate-stamp/treehh-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"treehh-populate"
+		],
+		"name" : "treehh-populate"
+	}
+}

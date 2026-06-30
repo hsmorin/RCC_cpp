@@ -6,5 +6,5 @@ CXX_DEFINES = -DEIGEN_MPL2_ONLY -DHAVE_CONFIG_H -DOR_PROTO_DLL="" -DPROTOBUF_USE
 
 CXX_INCLUDES = -I/home/hsmorin/Documents/RCC/cpp/main/build/_deps/treehh-src/src -isystem /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/include -isystem /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/include/coin -isystem /home/hsmorin/Documents/RCC/cpp/cpp_libraries/or-tools_x86_64_Ubuntu-24.04_cpp_v9.12.4544/include/eigen3
 
-CXX_FLAGS = -std=c++23 -fPIE -Wall -Wextra -Wpedantic -fwrapv
+CXX_FLAGS = -Wall -Wextra -std=gnu++23 -fPIE -fwrapv
 
